@@ -4,7 +4,7 @@
   android:layout_height="fill_parent"
   android:background="#ffffff"
   tools:context="org.wit.placemark.activities.PlacemarkListActivity">
-  
+
   <ImageView
     android:id="@+id/fullscreen_content"
     android:layout_width="fill_parent"

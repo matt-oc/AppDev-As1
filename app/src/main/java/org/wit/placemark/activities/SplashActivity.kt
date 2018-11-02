@@ -21,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
 
   internal val Runnable: Runnable = Runnable {
     if (!isFinishing) {
-      val intent = Intent(this, PlacemarkListActivity::class.java)
+      val intent = Intent(this, LoginActivity::class.java)
       startActivity(intent)
       finish()
     }

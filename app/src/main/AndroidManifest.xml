@@ -24,6 +24,7 @@
       </intent-filter>
     </activity>
     <activity android:name=".activities.PlacemarkActivity"></activity>
+    <activity android:name=".activities.LoginActivity"></activity>
     <activity android:name=".activities.PlacemarkListActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
