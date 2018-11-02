@@ -1,7 +1,9 @@
 package org.wit.placemark.activities
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.*
 import org.wit.placemark.R
@@ -11,9 +13,13 @@ import org.wit.placemark.R
  */
 class LoginActivity : AppCompatActivity() {
 
+
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_login)
+
+
 
     // get reference to all views
     var et_user_name = findViewById(R.id.et_email) as EditText
@@ -29,10 +35,13 @@ class LoginActivity : AppCompatActivity() {
 
     // set on-click listener
     btn_submit.setOnClickListener {
-      val user_name = et_user_name.text;
-      val password = et_password.text;
-      Toast.makeText(this, user_name, Toast.LENGTH_LONG).show()
-
+      val user_name = et_user_name.text.toString()
+      val password = et_password.text.toString()
+if(user_name.equals("matt") && password.equals("root")) {
+  Toast.makeText(this, "success", Toast.LENGTH_LONG).show()
+  val intent = Intent(this, PlacemarkListActivity::class.java)
+  startActivity(intent)
+}
       //todo
 
     }
