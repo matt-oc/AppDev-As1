@@ -42,7 +42,7 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
     btn_submit.setOnClickListener {
       val user_name = et_user_name.text.toString()
       val password = et_password.text.toString()
-if(user_name.equals("matt") && password.equals("root")) {
+if(user_name.equals("matt@wit.ie") && password.equals("root")) {
   Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show()
   val intent = Intent(this, HillfortListActivity::class.java)
   startActivity(intent)

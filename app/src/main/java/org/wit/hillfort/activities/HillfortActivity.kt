@@ -24,7 +24,7 @@ import org.wit.hillfort.models.HillfortModel
  * OCT 2018
  * Applied Computing
  *
- * Hillfort Avtivity Class
+ * Hillfort Activity Class
  */
 
 class HillfortActivity : AppCompatActivity(), AnkoLogger {
@@ -49,6 +49,8 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
       hillfort = intent.extras.getParcelable<HillfortModel>("hillfort_edit")
       hillfortTitle.setText(hillfort.title)
       description.setText(hillfort.description)
+      notes.setText(hillfort.notes)
+      hillfortVisited.isChecked()
       hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
       if (hillfort.image != null) {
         chooseImage.setText(R.string.change_hillfort_image)
@@ -59,6 +61,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
     btnAdd.setOnClickListener() {
       hillfort.title = hillfortTitle.text.toString()
       hillfort.description = description.text.toString()
+      hillfort.notes = notes.text.toString()
       if (hillfort.title.isEmpty()) {
         toast(R.string.enter_hillfort_title)
       } else {
