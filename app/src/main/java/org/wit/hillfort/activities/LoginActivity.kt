@@ -1,17 +1,22 @@
-package org.wit.placemark.activities
+package org.wit.hillfort.activities
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.view.View
 import android.widget.*
-import org.wit.placemark.R
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.toast
+import org.wit.hillfort.R
 
 /**
- * A Login Form Example in Kotlin Android
+ * Matthew O'Connor
+ * OCT 2018
+ * Applied Computing
+ *
+ * Login Class
  */
-class LoginActivity : AppCompatActivity() {
+
+class LoginActivity : AppCompatActivity(), AnkoLogger {
 
 
 
@@ -38,9 +43,11 @@ class LoginActivity : AppCompatActivity() {
       val user_name = et_user_name.text.toString()
       val password = et_password.text.toString()
 if(user_name.equals("matt") && password.equals("root")) {
-  Toast.makeText(this, "success", Toast.LENGTH_LONG).show()
-  val intent = Intent(this, PlacemarkListActivity::class.java)
+  Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show()
+  val intent = Intent(this, HillfortListActivity::class.java)
   startActivity(intent)
+} else {
+  toast("Login Unsuccessful")
 }
       //todo
 

@@ -1,4 +1,4 @@
-package org.wit.placemark.helpers
+package org.wit.hillfort.helpers
 
 import android.content.Context
 import android.util.Log

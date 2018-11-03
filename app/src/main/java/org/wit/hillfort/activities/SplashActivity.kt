@@ -1,3 +1,13 @@
+package org.wit.hillfort.activities
+
+import android.content.Intent
+import android.os.Bundle
+import android.os.Handler
+import android.support.v7.app.AppCompatActivity
+import org.jetbrains.anko.AnkoLogger
+import org.wit.hillfort.R
+
+
 /**
  * Matthew O'Connor
  * OCT 2018
@@ -6,16 +16,7 @@
  * Splash Screen Class
  */
 
-package org.wit.placemark.activities
-
-import android.content.Intent
-import android.os.Bundle
-import android.os.Handler
-import android.support.v7.app.AppCompatActivity
-import org.wit.placemark.R
-
-
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity(), AnkoLogger {
   private var DelayHandler: Handler? = null
   private val SPLASH_DELAY: Long = 5000 //5 seconds
 
