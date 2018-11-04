@@ -10,6 +10,7 @@ import org.jetbrains.anko.startActivityForResult
 import org.jetbrains.anko.toast
 import org.wit.hillfort.R
 import org.wit.hillfort.main.MainApp
+import org.wit.hillfort.models.HillfortModel
 import org.wit.hillfort.models.UserModel
 
 /**
@@ -23,6 +24,8 @@ import org.wit.hillfort.models.UserModel
 class LoginActivity : AppCompatActivity(), AnkoLogger {
 
   var user = UserModel()
+  var hillfort = HillfortModel()
+  var count = 0
   lateinit var app: MainApp
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +56,7 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
       val user_name = et_user_name.text.toString()
       val password = et_password.text.toString()
 if(app.users.findAll().any{ user -> user.email == user_name && user.password == password }) {
+  getVisited()
   toast(R.string.login_success)
   startActivityForResult<HillfortListActivity>(0)
   finish()
@@ -61,5 +65,11 @@ if(app.users.findAll().any{ user -> user.email == user_name && user.password == 
 }
 
     }
+  }
+
+  private fun getVisited() {
+    count = app.hillforts.findAll().count{ hillfort -> hillfort.visited == true}
+    user.visitedNo = count
+    info(user.visitedNo)
   }
 }
