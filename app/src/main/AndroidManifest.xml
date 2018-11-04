@@ -25,6 +25,7 @@
     </activity>
     <activity android:name="org.wit.hillfort.activities.HillfortActivity"></activity>
     <activity android:name="org.wit.hillfort.activities.LoginActivity"></activity>
+    <activity android:name="org.wit.hillfort.activities.SettingsActivity"></activity>
     <activity android:name="org.wit.hillfort.activities.HillfortListActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />

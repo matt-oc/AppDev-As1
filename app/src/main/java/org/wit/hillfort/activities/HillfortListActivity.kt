@@ -12,6 +12,7 @@ import org.jetbrains.anko.startActivityForResult
 import org.wit.hillfort.R
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.HillfortModel
+import org.wit.hillfort.models.UserModel
 
 /**
  * Matthew O'Connor
@@ -24,6 +25,7 @@ import org.wit.hillfort.models.HillfortModel
 class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
 
   lateinit var app: MainApp
+  var user = UserModel()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -61,12 +63,20 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
         startActivityForResult<LoginActivity>(0)
         finish()
       }
+
+      R.id.user_settings -> {
+        onSettingsClick(user)
+      }
     }
     return super.onOptionsItemSelected(item)
   }
 
   override fun onHillfortClick(hillfort: HillfortModel) {
     startActivityForResult(intentFor<HillfortActivity>().putExtra("hillfort_edit", hillfort), 0)
+  }
+
+  fun onSettingsClick(user: UserModel) {
+    startActivityForResult(intentFor<SettingsActivity>().putExtra("user_settings", user), 0)
   }
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
