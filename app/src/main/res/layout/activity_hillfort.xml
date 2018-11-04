@@ -31,6 +31,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_below="@id/appBarLayout"
+      android:layout_marginTop="0dp"
       android:fillViewport="true">
 
       <LinearLayout
@@ -87,12 +88,21 @@
 
         <CheckBox
           android:id="@+id/hillfortVisited"
-          android:layout_width="match_parent"
+          android:layout_width="84dp"
           android:layout_height="wrap_content"
-          android:layout_marginStart="80dp"
+          android:layout_marginStart="0dp"
           android:layout_marginTop="20dp"
           android:paddingBottom="0dp"
           android:text="@string/visited" />
+
+        <EditText
+          android:id="@+id/dateVisited"
+          android:layout_width="146dp"
+          android:layout_height="wrap_content"
+          android:textSize="12sp"
+          android:gravity="center_horizontal"
+          android:inputType="date"
+          android:hint="@string/hint_date_visited"/>
 
         <TextView
           android:id="@+id/notesLabel"

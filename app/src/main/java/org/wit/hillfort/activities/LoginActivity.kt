@@ -46,6 +46,7 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
 if(user_name.equals("m") && password.equals("r")) {
   Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show()
   startActivityForResult<HillfortListActivity>(0)
+  finish()
 } else {
   toast("Login Unsuccessful")
 }

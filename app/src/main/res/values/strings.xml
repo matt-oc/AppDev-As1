@@ -17,5 +17,7 @@
   <string name="loader_text">Welcome</string>
   <string name="visited">visited</string>
   <string name="descriptionHfImage">Hillfort Image</string>
+  <string name="hint_date_visited">Date</string>
+  <string name="enter_date_visited">Please enter date visited</string>
 </resources>
 

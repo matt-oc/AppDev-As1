@@ -50,8 +50,8 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
       hillfortTitle.setText(hillfort.title)
       description.setText(hillfort.description)
       notes.setText(hillfort.notes)
-      info("CHECK-----" + hillfort.visited)
       hillfortVisited.setChecked(hillfort.visited)
+      dateVisited.setText(hillfort.date)
       hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
       if (hillfort.image != null) {
         chooseImage.setText(R.string.change_hillfort_image)
@@ -64,20 +64,30 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
       hillfort.title = hillfortTitle.text.toString()
       hillfort.description = description.text.toString()
       hillfort.notes = notes.text.toString()
-hillfort.visited = hillfortVisited.isChecked()
-      if (hillfort.title.isEmpty()) {
-        toast(R.string.enter_hillfort_title)
+      hillfort.visited = hillfortVisited.isChecked()
+      hillfort.date = dateVisited.text.toString()
+      if (hillfort.title.isEmpty() || (hillfort.visited && hillfort.date.isEmpty())) {
+        if (hillfort.title.isEmpty()) {
+          toast(R.string.enter_hillfort_title)
+        }
+        if ((hillfort.visited && hillfort.date.isEmpty())) {
+          toast(R.string.enter_date_visited)
+        }
       } else {
         if (edit) {
           app.hillforts.update(hillfort.copy())
+          info(hillfort.visited)
+          info("Hillfort Update: $hillfortTitle")
+          setResult(AppCompatActivity.RESULT_OK)
+          finish()
         } else {
           app.hillforts.create(hillfort.copy())
+          info(hillfort.visited)
+          info("Hillfort Create: $hillfortTitle")
+          setResult(AppCompatActivity.RESULT_OK)
+          finish()
         }
       }
-      info(hillfort.visited)
-      info("add Button Pressed: $hillfortTitle")
-      setResult(AppCompatActivity.RESULT_OK)
-      finish()
     }
 
     chooseImage.setOnClickListener {
