@@ -40,22 +40,32 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
     var btn_register = findViewById(R.id.btn_register) as Button
     var btn_submit = findViewById(R.id.btn_submit) as Button
 
+
     btn_register.setOnClickListener {
       user.email = et_user_name.text.toString()
       user.password = et_password.text.toString()
-      app.users.create(user.copy())
-      info(user)
-      info("User Create: $et_user_name")
-      toast(R.string.registration_success)
-      toast(R.string.login_prompt)
-      info("---------" + app.users.findAll())
+
+      if (user.email.isEmpty() || user.password.isEmpty()) {
+        toast(R.string.blank_input_warning)
+      }
+      else {
+        app.users.create(user.copy())
+        info(user)
+        info("User Create: $et_user_name")
+        toast(R.string.registration_success)
+        toast(R.string.login_prompt)
+        info("---------" + app.users.findAll())
+      }
     }
 
     // set on-click listener
     btn_submit.setOnClickListener {
       val user_name = et_user_name.text.toString()
       val password = et_password.text.toString()
-if(app.users.findAll().any{ user -> user.email == user_name && user.password == password }) {
+      if (user_name.isEmpty() || password.isEmpty()) {
+        toast(R.string.blank_input_warning)
+      }
+      else if(app.users.findAll().any{ user -> user.email == user_name && user.password == password }) {
   getVisited()
   toast(R.string.login_success)
   startActivityForResult<HillfortListActivity>(0)
