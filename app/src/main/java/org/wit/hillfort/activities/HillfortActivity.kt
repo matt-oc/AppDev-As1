@@ -64,16 +64,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
       hillfort.title = hillfortTitle.text.toString()
       hillfort.description = description.text.toString()
       hillfort.notes = notes.text.toString()
-
-if (hillfortVisited.isChecked()) {
-  hillfort.visited = true
-  info("-----------checked")
-}
-      else {
-  hillfort.visited = false
-  info("-----------NOTchecked")
-      }
-
+hillfort.visited = hillfortVisited.isChecked()
       if (hillfort.title.isEmpty()) {
         toast(R.string.enter_hillfort_title)
       } else {
@@ -110,7 +101,6 @@ if (hillfortVisited.isChecked()) {
   }
 
   override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-    info("--------LOOK" + item?.itemId)
     when (item?.itemId) {
 
       R.id.item_cancel -> {
