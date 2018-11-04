@@ -22,5 +22,9 @@
   <string name="hillfort_delete">Hillfort deleted succesfully</string>
   <string name="user_settings">settings</string>
   <string name="menu_logout">logout</string>
+  <string name="login_fail">Login Unsuccessful</string>
+  <string name="registration_success">Successfully Registered</string>
+  <string name="login_prompt">You may now login</string>
+  <string name="login_success">Login Successful</string>
 </resources>
 
