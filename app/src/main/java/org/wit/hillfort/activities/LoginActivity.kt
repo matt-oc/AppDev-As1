@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.startActivityForResult
 import org.jetbrains.anko.toast
 import org.wit.hillfort.R
 
@@ -42,10 +43,9 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
     btn_submit.setOnClickListener {
       val user_name = et_user_name.text.toString()
       val password = et_password.text.toString()
-if(user_name.equals("matt@wit.ie") && password.equals("root")) {
+if(user_name.equals("m") && password.equals("r")) {
   Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show()
-  val intent = Intent(this, HillfortListActivity::class.java)
-  startActivity(intent)
+  startActivityForResult<HillfortListActivity>(0)
 } else {
   toast("Login Unsuccessful")
 }

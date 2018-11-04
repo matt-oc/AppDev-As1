@@ -34,5 +34,16 @@
       android:layout_below="@id/hillfortTitle"
       android:layout_toRightOf="@+id/imageIcon"/>
 
+    <CheckBox
+      android:id="@+id/hillfortVisited"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentLeft="true"
+      android:clickable="false"
+      android:contextClickable="false"
+      android:enabled="false"
+      android:paddingBottom="0dp"
+      android:text="@string/visited" />
+
   </RelativeLayout>
 </android.support.v7.widget.CardView>

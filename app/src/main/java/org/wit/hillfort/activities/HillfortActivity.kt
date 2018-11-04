@@ -50,7 +50,8 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
       hillfortTitle.setText(hillfort.title)
       description.setText(hillfort.description)
       notes.setText(hillfort.notes)
-      hillfortVisited.isChecked()
+      info("CHECK-----" + hillfort.visited)
+      hillfortVisited.setChecked(hillfort.visited)
       hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
       if (hillfort.image != null) {
         chooseImage.setText(R.string.change_hillfort_image)
@@ -58,10 +59,21 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
       btnAdd.setText(R.string.save_hillfort)
     }
 
+
     btnAdd.setOnClickListener() {
       hillfort.title = hillfortTitle.text.toString()
       hillfort.description = description.text.toString()
       hillfort.notes = notes.text.toString()
+
+if (hillfortVisited.isChecked()) {
+  hillfort.visited = true
+  info("-----------checked")
+}
+      else {
+  hillfort.visited = false
+  info("-----------NOTchecked")
+      }
+
       if (hillfort.title.isEmpty()) {
         toast(R.string.enter_hillfort_title)
       } else {
@@ -71,6 +83,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
           app.hillforts.create(hillfort.copy())
         }
       }
+      info(hillfort.visited)
       info("add Button Pressed: $hillfortTitle")
       setResult(AppCompatActivity.RESULT_OK)
       finish()
@@ -97,13 +110,21 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
   }
 
   override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    info("--------LOOK" + item?.itemId)
     when (item?.itemId) {
+
       R.id.item_cancel -> {
+        finish()
+      }
+      R.id.item_delete -> {
+        app.hillforts.delete(hillfort)
         finish()
       }
     }
     return super.onOptionsItemSelected(item)
   }
+
+
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     super.onActivityResult(requestCode, resultCode, data)

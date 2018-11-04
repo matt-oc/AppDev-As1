@@ -29,12 +29,19 @@ class HillfortMemStore : HillfortStore, AnkoLogger {
       foundHillfort.title = hillfort.title
       foundHillfort.description = hillfort.description
       foundHillfort.notes = hillfort.notes
+      info("UPDATE-----" + hillfort.visited)
+      foundHillfort.visited = hillfort.visited
       foundHillfort.image = hillfort.image
       foundHillfort.lat = hillfort.lat
       foundHillfort.lng = hillfort.lng
       foundHillfort.zoom = hillfort.zoom
       logAll();
     }
+  }
+
+  override fun delete(hillfort: HillfortModel) {
+    hillforts.remove(hillfort)
+    logAll()
   }
 
   fun logAll() {
