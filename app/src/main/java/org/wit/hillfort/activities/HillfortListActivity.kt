@@ -54,7 +54,13 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
 
   override fun onOptionsItemSelected(item: MenuItem?): Boolean {
     when (item?.itemId) {
-      R.id.item_add -> startActivityForResult<HillfortActivity>(0)
+      R.id.item_add -> {
+        startActivityForResult<HillfortActivity>(0)
+      }
+      R.id.user_logout -> {
+        startActivityForResult<LoginActivity>(0)
+        finish()
+      }
     }
     return super.onOptionsItemSelected(item)
   }

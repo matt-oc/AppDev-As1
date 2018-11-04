@@ -19,5 +19,8 @@
   <string name="descriptionHfImage">Hillfort Image</string>
   <string name="hint_date_visited">Date</string>
   <string name="enter_date_visited">Please enter date visited</string>
+  <string name="hillfort_delete">Hillfort deleted succesfully</string>
+  <string name="user_settings">settings</string>
+  <string name="menu_logout">logout</string>
 </resources>
 

@@ -118,6 +118,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
       }
       R.id.item_delete -> {
         app.hillforts.delete(hillfort)
+        toast(R.string.hillfort_delete)
         finish()
       }
     }
