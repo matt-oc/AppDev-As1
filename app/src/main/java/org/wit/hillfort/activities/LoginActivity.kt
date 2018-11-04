@@ -4,10 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
-import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
-import org.jetbrains.anko.startActivityForResult
-import org.jetbrains.anko.toast
+import org.jetbrains.anko.*
 import org.wit.hillfort.R
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.HillfortModel
@@ -24,8 +21,10 @@ import org.wit.hillfort.models.UserModel
 class LoginActivity : AppCompatActivity(), AnkoLogger {
 
   var user = UserModel()
+  var userList = listOf<UserModel>()
   var hillfort = HillfortModel()
   var count = 0
+
   lateinit var app: MainApp
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +43,6 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
     btn_register.setOnClickListener {
       user.email = et_user_name.text.toString()
       user.password = et_password.text.toString()
-
       if (user.email.isEmpty() || user.password.isEmpty()) {
         toast(R.string.blank_input_warning)
       }
@@ -66,13 +64,15 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
         toast(R.string.blank_input_warning)
       }
       else if(app.users.findAll().any{ user -> user.email == user_name && user.password == password }) {
-  getVisited()
-  toast(R.string.login_success)
-  startActivityForResult<HillfortListActivity>(0)
-  finish()
-} else {
-  toast(R.string.login_fail)
-}
+        userList = app.users.findAll().filter{ user -> user.email == user_name }
+        user = userList[0]
+        getVisited()
+        toast(R.string.login_success)
+        startActivityForResult(intentFor<HillfortListActivity>().putExtra("ID", user), 0)
+        finish()
+      } else {
+        toast(R.string.login_fail)
+      }
 
     }
   }

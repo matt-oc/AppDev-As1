@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import kotlinx.android.synthetic.main.activity_hillfort.*
 import kotlinx.android.synthetic.main.user_settings.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.startActivityForResult
@@ -35,10 +34,12 @@ class SettingsActivity : AppCompatActivity(), AnkoLogger {
     setSupportActionBar(toolbarSettings)
 
     app = application as MainApp
-    user = intent.extras.getParcelable<UserModel>("user_settings")
+    if (intent.hasExtra("ID")) {
+      user = intent.extras.getParcelable<UserModel>("ID")
+    }
     user_email.setText(getResources().getString(R.string.email_string) + user.email)
     user_password.setText(getResources().getString(R.string.password_string) + user.password)
-    visited_hillforts.setText(getResources().getString(R.string.no_listed_sites) + user.visitedNo)
+    visited_hillforts.setText(getResources().getString(R.string.no_visited_sites) + user.visitedNo)
     total_hillforts.setText(getResources().getString(R.string.no_listed_sites) + app.hillforts.findAll().size)
   }
 

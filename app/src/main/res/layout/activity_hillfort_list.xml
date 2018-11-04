@@ -25,10 +25,12 @@
     android:id="@+id/recyclerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
     android:layout_gravity="center_horizontal"
-    android:layout_marginLeft="40dp"
-    android:layout_marginRight="40dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginBottom="20dp"
+    android:gravity="center_horizontal"
+    android:paddingBottom="50dp"
     android:scrollbars="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 

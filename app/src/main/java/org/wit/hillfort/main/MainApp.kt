@@ -9,7 +9,6 @@ import org.wit.hillfort.models.UserJSONStore
 import org.wit.hillfort.models.UserStore
 
 class MainApp : Application(), AnkoLogger {
-
   lateinit var hillforts: HillfortStore
   lateinit var users: UserStore
 
