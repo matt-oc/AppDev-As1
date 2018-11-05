@@ -7,11 +7,13 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.*
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
 import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
 import org.wit.hillfort.R
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.HillfortModel
+import org.wit.hillfort.models.UserModel
 
 /**
  * Matthew O'Connor
@@ -24,6 +26,8 @@ import org.wit.hillfort.models.HillfortModel
 class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
 
   lateinit var app: MainApp
+  var user = UserModel()
+  var visitedCount = 0;
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -36,10 +40,22 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
     recyclerView.layoutManager = layoutManager
     recyclerView.adapter = HillfortAdapter(app.hillforts.findAll(), this)
     loadHillforts()
+
+    if (intent.hasExtra("ID")) {
+      user = intent.extras.getParcelable<UserModel>("ID")
+    }
   }
 
   private fun loadHillforts() {
+    visitedCount = 0
     showHillforts( app.hillforts.findAll())
+    for (i in app.hillforts.findAll()) {
+      if (i.visited == true) {
+        visitedCount++
+      }
+
+    }
+    user.visitedNo = visitedCount
   }
 
   fun showHillforts (hillforts: List<HillfortModel>) {
@@ -60,6 +76,10 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
       R.id.user_logout -> {
         startActivityForResult<LoginActivity>(0)
         finish()
+      }
+
+      R.id.user_settings -> {
+        startActivityForResult(intentFor<SettingsActivity>().putExtra("ID", user), 0)
       }
     }
     return super.onOptionsItemSelected(item)

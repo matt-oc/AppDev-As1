@@ -37,7 +37,6 @@ class SplashActivity : AppCompatActivity(), AnkoLogger {
 
     //Navigate with delay
     DelayHandler!!.postDelayed(Runnable, SPLASH_DELAY)
-
   }
 
   public override fun onDestroy() {

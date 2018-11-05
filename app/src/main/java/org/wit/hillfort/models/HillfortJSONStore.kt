@@ -1,7 +1,6 @@
 package org.wit.hillfort.models
 
 import android.content.Context
-import android.text.TextUtils.indexOf
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
@@ -14,7 +13,7 @@ val JSON_FILE = "hillforts.json"
 val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
 val listType = object : TypeToken<java.util.ArrayList<HillfortModel>>() {}.type
 
-fun generateRandomId(): Long {
+private fun generateRandomId(): Long {
   return Random().nextLong()
 }
 

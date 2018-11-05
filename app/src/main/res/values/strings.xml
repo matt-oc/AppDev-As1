@@ -19,8 +19,24 @@
   <string name="descriptionHfImage">Hillfort Image</string>
   <string name="hint_date_visited">Date</string>
   <string name="enter_date_visited">Please enter date visited</string>
-  <string name="hillfort_delete">Hillfort deleted succesfully</string>
+  <string name="hillfort_delete">Hillfort deleted successfully</string>
   <string name="user_settings">settings</string>
   <string name="menu_logout">logout</string>
+  <string name="login_fail">Login Unsuccessful</string>
+  <string name="registration_success">Successfully Registered</string>
+  <string name="login_prompt">You may now login</string>
+  <string name="login_success">Login Successful</string>
+  <string name="email">Email</string>
+  <string name="password">Password</string>
+  <string name="hillforts_visited">Hillforts Visited</string>
+  <string name="total_hillforts">Total Hillforts</string>
+  <string name="user_settings_title">Current User:</string>
+  <string name="user_logged_out">Logout Successful</string>
+  <string name="email_string">Email: </string>
+  <string name="password_string">Password: </string>
+  <string name="no_visited_sites">No of visited sites: </string>
+  <string name="no_listed_sites">No of listed sites: </string>
+  <string name="blank_input_warning">Username &amp; Password not complete</string>
+  <string name="already_registered_warning">Username already registered</string>
 </resources>
 
