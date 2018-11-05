@@ -123,7 +123,7 @@
           android:inputType="text|textMultiLine"
           android:maxLength="1000"
           android:maxLines="20"
-          android:padding="5dp"
+          android:padding="8dp"
           android:textColor="@color/colorPrimaryDark"
           android:textSize="16sp" />
 
