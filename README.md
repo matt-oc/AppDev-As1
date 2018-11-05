@@ -1,6 +1,10 @@
 # AppDev-As1
 Assignment 1 for App Development
 
+<img width="271" alt="screen shot 2018-11-05 at 00 44 47" src="https://user-images.githubusercontent.com/16647291/47972523-0432ff00-e095-11e8-9199-7aa41f336024.png">
+<img width="269" alt="screen shot 2018-11-05 at 00 41 45" src="https://user-images.githubusercontent.com/16647291/47972544-32184380-e095-11e8-8b3f-15adb2b2ad88.png">
+
+
 'user@wit.ie' is pre registered
 password is 'root'
 
