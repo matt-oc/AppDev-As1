@@ -38,5 +38,7 @@
   <string name="no_listed_sites">No of listed sites: </string>
   <string name="blank_input_warning">Username &amp; Password not complete</string>
   <string name="already_registered_warning">Username already registered</string>
+  <string name="title_activity_hillfort_maps">Map of all Hillforts</string>
+
 </resources>
 

@@ -81,6 +81,11 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
       R.id.user_settings -> {
         startActivityForResult(intentFor<SettingsActivity>().putExtra("ID", user), 0)
       }
+
+      R.id.item_map -> {
+        startActivityForResult<HillfortMapsActivity>(0)
+      }
+
     }
     return super.onOptionsItemSelected(item)
   }

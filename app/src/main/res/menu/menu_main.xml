@@ -11,6 +11,13 @@
     app:showAsAction="always" />
 
   <item
+    android:id="@+id/item_map"
+    android:icon="@android:drawable/ic_menu_mapmode"
+    android:tint="@color/colorAccent"
+    android:title="@string/menu_addHillfort"
+    app:showAsAction="always"/>
+
+  <item
     android:id="@+id/user_settings"
     android:icon="@android:drawable/ic_menu_preferences"
     android:title="@string/user_settings"
