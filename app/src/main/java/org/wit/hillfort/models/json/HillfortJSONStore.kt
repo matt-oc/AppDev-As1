@@ -30,27 +30,27 @@ class HillfortJSONStore : HillfortStore, AnkoLogger {
     }
   }
 
-  override fun findAll(): MutableList<HillfortModel> {
+  suspend override fun findAll(): MutableList<HillfortModel> {
     return hillforts
   }
 
-  override fun create(hillfort: HillfortModel) {
+  suspend override fun create(hillfort: HillfortModel) {
     hillfort.id = generateRandomId()
     hillforts.add(hillfort)
     serialize()
   }
 
-  override fun delete(hillfort: HillfortModel) {
+  suspend override fun delete(hillfort: HillfortModel) {
     hillforts.remove(hillfort)
     serialize()
   }
 
-  override fun findById(id: Long): HillfortModel? {
+  suspend override fun findById(id: Long): HillfortModel? {
     val foundHillfort: HillfortModel? = hillforts.find { it.id == id }
     return foundHillfort
   }
 
-  override fun update(hillfort: HillfortModel) {
+  suspend override fun update(hillfort: HillfortModel) {
     var foundHillfort: HillfortModel? = hillforts.find { p -> p.id == hillfort.id }
     if (foundHillfort != null) {
       foundHillfort.title = hillfort.title

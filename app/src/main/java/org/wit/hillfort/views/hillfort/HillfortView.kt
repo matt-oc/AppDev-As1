@@ -1,7 +1,6 @@
 package org.wit.hillfort.views.hillfort
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -86,7 +85,7 @@ class HillfortView : BaseView(), AnkoLogger {
             hillfort.date = ("")
           }
           presenter.doAddOrSave(hillfort.title, hillfort.description, hillfort.notes, hillfort.visited, hillfort.date)
-          presenter.doVisitedCount()
+         // presenter.doVisitedCount()
         }
       }
     }

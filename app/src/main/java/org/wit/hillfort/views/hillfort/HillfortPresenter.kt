@@ -24,6 +24,8 @@ import org.wit.hillfort.models.UserModel
 import org.wit.hillfort.views.BasePresenter
 import org.wit.hillfort.views.BaseView
 import org.wit.hillfort.views.VIEW
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.async
 import org.wit.hillfort.views.editlocation.EditLocationView
 
 class HillfortPresenter(view: BaseView) : BasePresenter(view) {
@@ -61,32 +63,36 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
     hillfort.notes = notes
     hillfort.visited = hillfortVisited
     hillfort.date = dateVisited
-    if (edit) {
-      app.hillforts.update(hillfort)
-    } else {
-      app.hillforts.create(hillfort)
+    async(UI) {
+      if (edit) {
+        app.hillforts.update(hillfort)
+      } else {
+        app.hillforts.create(hillfort)
+      }
+      view?.finish()
     }
-    view?.finish()
   }
 
-  fun doVisitedCount () {
-    visitedCount = 0
-    for (i in app.hillforts.findAll()) {
-      if (i.visited == true) {
-        visitedCount++
-      }
-    }
-    user.visitedNo = visitedCount
-  }
+  //fun doVisitedCount () {
+   // visitedCount = 0
+    //for (i in app.hillforts.findAll()) {
+     // if (i.visited == true) {
+      //  visitedCount++
+     // }
+    //}
+    //user.visitedNo = visitedCount
+  //}
 
   fun doCancel() {
     view?.finish()
   }
 
   fun doDelete() {
-    app.hillforts.delete(hillfort)
-    view?.toast(R.string.hillfort_delete)
-    view?.finish()
+    async(UI) {
+      app.hillforts.delete(hillfort)
+      view?.toast(R.string.hillfort_delete)
+      view?.finish()
+    }
   }
 
   fun doSelectImage() {

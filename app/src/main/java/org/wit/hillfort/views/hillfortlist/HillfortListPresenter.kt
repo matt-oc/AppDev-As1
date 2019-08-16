@@ -4,6 +4,8 @@ import org.wit.hillfort.models.HillfortModel
 import org.wit.hillfort.views.BasePresenter
 import org.wit.hillfort.views.BaseView
 import org.wit.hillfort.views.VIEW
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.async
 
 class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
 
@@ -20,6 +22,8 @@ class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
   }
 
   fun loadHillforts() {
-    view?.showHillforts(app.hillforts.findAll())
+    async(UI) {
+      view?.showHillforts(app.hillforts.findAll())
+    }
   }
   }

@@ -1,10 +1,12 @@
 package org.wit.hillfort.activities
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.user_settings.*
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.async
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.startActivityForResult
 import org.jetbrains.anko.toast
@@ -37,10 +39,12 @@ class SettingsView : AppCompatActivity(), AnkoLogger {
     if (intent.hasExtra("ID")) {
       user = intent.extras.getParcelable<UserModel>("ID")
     }
-    user_email.setText(getResources().getString(R.string.email_string) + user.email)
-    user_password.setText(getResources().getString(R.string.password_string) + user.password)
-    visited_hillforts.setText(getResources().getString(R.string.no_visited_sites) + user.visitedNo)
-    total_hillforts.setText(getResources().getString(R.string.no_listed_sites) + app.hillforts.findAll().size)
+    async(UI) {
+      user_email.setText(getResources().getString(R.string.email_string) + user.email)
+      user_password.setText(getResources().getString(R.string.password_string) + user.password)
+      visited_hillforts.setText(getResources().getString(R.string.no_visited_sites) + user.visitedNo)
+      total_hillforts.setText(getResources().getString(R.string.no_listed_sites) + app.hillforts.findAll().size)
+    }
   }
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {

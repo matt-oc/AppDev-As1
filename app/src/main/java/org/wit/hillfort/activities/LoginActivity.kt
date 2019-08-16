@@ -1,8 +1,9 @@
 package org.wit.hillfort.activities
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import kotlinx.coroutines.experimental.async
 import org.jetbrains.anko.*
 import org.wit.hillfort.R
 import org.wit.hillfort.main.MainApp
@@ -78,8 +79,10 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
   }
 
   private fun getVisited() {
-    count = app.hillforts.findAll().count{ hillfort -> hillfort.visited == true}
-    user.visitedNo = count
-    info(user.visitedNo)
+    async(kotlinx.coroutines.experimental.android.UI) {
+      count = app.hillforts.findAll().count { hillfort -> hillfort.visited == true }
+      user.visitedNo = count
+      info(user.visitedNo)
+    }
   }
 }
