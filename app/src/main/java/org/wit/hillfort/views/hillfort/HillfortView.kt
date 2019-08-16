@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import com.google.android.gms.maps.GoogleMap
 import kotlinx.android.synthetic.main.activity_hillfort.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -17,6 +18,7 @@ import org.wit.hillfort.views.BaseView
 class HillfortView : BaseView(), AnkoLogger {
 
   lateinit var presenter: HillfortPresenter
+  lateinit var map: GoogleMap
   var hillfort = HillfortModel()
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +31,12 @@ class HillfortView : BaseView(), AnkoLogger {
 
     chooseImage.setOnClickListener { presenter.doSelectImage() }
 
-    hillfortLocation.setOnClickListener { presenter.doSetLocation() }
+    mapView.onCreate(savedInstanceState);
+    mapView.getMapAsync {
+      map = it
+      presenter.doConfigureMap(map)
+      it.setOnMapClickListener { presenter.doSetLocation() }
+    }
   }
 
   override fun showHillfort(hillfort: HillfortModel) {
@@ -42,6 +49,8 @@ class HillfortView : BaseView(), AnkoLogger {
     if (hillfort.image != null) {
       chooseImage.setText(R.string.change_hillfort_image)
     }
+    lat.setText("%.6f".format(hillfort.lat))
+    lng.setText("%.6f".format(hillfort.lng))
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -89,6 +98,12 @@ class HillfortView : BaseView(), AnkoLogger {
     if (data != null) {
       presenter.doActivityResult(requestCode, resultCode, data)
     }
+  }
+
+  override fun onResume() {
+    super.onResume()
+    mapView.onResume()
+    presenter.doResartLocationUpdates()
   }
 
   override fun onBackPressed() {
