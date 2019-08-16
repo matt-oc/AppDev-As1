@@ -53,7 +53,7 @@ class HillfortListView : BaseView(), HillfortListener {
         presenter.doAddHillfort()
       }
       R.id.user_logout -> {
-        startActivityForResult<LoginActivity>(0)
+        presenter.doLogout()
         finish()
       }
 

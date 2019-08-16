@@ -15,16 +15,16 @@
     android:icon="@android:drawable/ic_menu_mapmode"
     android:tint="@color/colorAccent"
     android:title="@string/menu_addHillfort"
-    app:showAsAction="always"/>
+    app:showAsAction="never"/>
 
   <item
     android:id="@+id/user_settings"
     android:icon="@android:drawable/ic_menu_preferences"
     android:title="@string/user_settings"
-    app:showAsAction="always" />
+    app:showAsAction="never" />
 
   <item
     android:id="@+id/user_logout"
     android:title="@string/menu_logout"
-    app:showAsAction="always"/>
+    app:showAsAction="never"/>
 </menu>
