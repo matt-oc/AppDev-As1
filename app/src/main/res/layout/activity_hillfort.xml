@@ -203,24 +203,6 @@
       app:layout_constraintHorizontal_bias="0.5"
       app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-      android:id="@+id/btnAdd"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_margin="16dp"
-      android:layout_marginEnd="12dp"
-      android:layout_marginBottom="16dp"
-      android:background="@color/colorAccent"
-      android:padding="8dp"
-      android:stateListAnimator="@null"
-      android:text="@string/button_addHillfort"
-      android:textColor="@color/colorPrimary"
-      android:textSize="16sp"
-      app:layout_constraintBottom_toTopOf="@+id/hillfortLocation"
-      app:layout_constraintEnd_toStartOf="@+id/hillfortImage"
-      app:layout_constraintHorizontal_bias="0.5"
-      app:layout_constraintStart_toStartOf="parent" />
-
 
   </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

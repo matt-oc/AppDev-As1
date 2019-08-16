@@ -8,17 +8,22 @@ import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.Location
 import org.wit.hillfort.models.HillfortModel
 import org.jetbrains.anko.toast
+import org.wit.hillfort.models.UserModel
+import org.wit.hillfort.views.BasePresenter
+import org.wit.hillfort.views.BaseView
+import org.wit.hillfort.views.VIEW
 import org.wit.hillfort.views.editlocation.EditLocationView
 
-class HillfortPresenter(val view: HillfortView) {
+class HillfortPresenter(view: BaseView) : BasePresenter(view) {
 
   val IMAGE_REQUEST = 1
   val LOCATION_REQUEST = 2
 
   var hillfort = HillfortModel()
-  var location = Location(52.245696, -7.139102, 15f)
-  var app: MainApp
+  var defLocation = Location(52.245696, -7.139102, 15f)
   var edit = false;
+  var user = UserModel()
+  var visitedCount = 0;
 
   init {
     app = view.application as MainApp
@@ -40,43 +45,54 @@ class HillfortPresenter(val view: HillfortView) {
     } else {
       app.hillforts.create(hillfort)
     }
-    view.finish()
+    view?.finish()
+  }
+
+  fun doVisitedCount () {
+    visitedCount = 0
+    for (i in app.hillforts.findAll()) {
+      if (i.visited == true) {
+        visitedCount++
+      }
+    }
+    user.visitedNo = visitedCount
   }
 
   fun doCancel() {
-    view.finish()
+    view?.finish()
   }
 
   fun doDelete() {
     app.hillforts.delete(hillfort)
-    view.toast(R.string.hillfort_delete)
-    view.finish()
+    view?.toast(R.string.hillfort_delete)
+    view?.finish()
   }
 
   fun doSelectImage() {
-    showImagePicker(view, IMAGE_REQUEST)
+    view?.let {
+      showImagePicker(view!!, IMAGE_REQUEST)
+    }
   }
 
   fun doSetLocation() {
-    if (hillfort.zoom != 0f) {
-      location.lat = hillfort.lat
-      location.lng = hillfort.lng
-      location.zoom = hillfort.zoom
+    if (edit == false) {
+      view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", defLocation)
+    } else {
+      view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", Location(hillfort.lat, hillfort.lng, hillfort.zoom))
     }
-    view.startActivityForResult(view.intentFor<EditLocationView>().putExtra("location", location), LOCATION_REQUEST)
-  }
 
-  fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
-    when (requestCode) {
-      IMAGE_REQUEST -> {
-        hillfort.image = data.data.toString()
-        view.showHillfort(hillfort)
-      }
-      LOCATION_REQUEST -> {
-        location = data.extras.getParcelable<Location>("location")
-        hillfort.lat = location.lat
-        hillfort.lng = location.lng
-        hillfort.zoom = location.zoom
+    fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+      when (requestCode) {
+        IMAGE_REQUEST -> {
+          hillfort.image = data.data.toString()
+          view?.showHillfort(hillfort)
+        }
+        LOCATION_REQUEST -> {
+          val location = data.extras.getParcelable<Location>("location")
+          hillfort.lat = location.lat
+          hillfort.lng = location.lng
+          hillfort.zoom = location.zoom
+        }
       }
     }
   }

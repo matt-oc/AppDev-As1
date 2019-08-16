@@ -13,32 +13,35 @@ import org.wit.hillfort.activities.*
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.HillfortModel
 import org.wit.hillfort.models.UserModel
+import org.wit.hillfort.views.BaseView
 import org.wit.hillfort.views.hillfort.HillfortView
 import org.wit.hillfort.views.map.HillfortMapView
 
-class HillfortListView : AppCompatActivity(), HillfortListener {
+class HillfortListView : BaseView(), HillfortListener {
 
   lateinit var presenter: HillfortListPresenter
-  lateinit var app: MainApp
   var user = UserModel()
   var visitedCount = 0;
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_hillfort_list)
-    toolbarMain.title = title
-    setSupportActionBar(toolbarMain)
+    init(toolbarMain)
 
-    presenter = HillfortListPresenter(this)
+    presenter = initPresenter(HillfortListPresenter(this)) as HillfortListPresenter
+
     val layoutManager = LinearLayoutManager(this)
     recyclerView.layoutManager = layoutManager
-    recyclerView.adapter = HillfortAdapter(presenter.getHillforts(), this)
-    recyclerView.adapter?.notifyDataSetChanged()
-    hillfortsVisited()
+    presenter.loadHillforts()
 
     if (intent.hasExtra("ID")) {
       user = intent.extras.getParcelable<UserModel>("ID")
     }
+  }
+
+   override fun showHillforts(hillforts: List<HillfortModel>) {
+    recyclerView.adapter = HillfortAdapter(hillforts, this)
+    recyclerView.adapter?.notifyDataSetChanged()
   }
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -76,14 +79,4 @@ class HillfortListView : AppCompatActivity(), HillfortListener {
     super.onActivityResult(requestCode, resultCode, data)
   }
 
-  private fun hillfortsVisited() {
-    visitedCount = 0
-    for (i in app.hillforts.findAll()) {
-      if (i.visited == true) {
-        visitedCount++
-      }
-
-    }
-    user.visitedNo = visitedCount
-  }
 }

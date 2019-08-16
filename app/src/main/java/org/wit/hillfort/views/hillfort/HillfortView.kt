@@ -12,8 +12,9 @@ import org.jetbrains.anko.toast
 import org.wit.hillfort.R
 import org.wit.hillfort.helpers.readImageFromPath
 import org.wit.hillfort.models.HillfortModel
+import org.wit.hillfort.views.BaseView
 
-class HillfortView : AppCompatActivity(), AnkoLogger {
+class HillfortView : BaseView(), AnkoLogger {
 
   lateinit var presenter: HillfortPresenter
   var hillfort = HillfortModel()
@@ -21,39 +22,17 @@ class HillfortView : AppCompatActivity(), AnkoLogger {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_hillfort)
-    toolbarAdd.title = title
-    setSupportActionBar(toolbarAdd)
+    init(toolbarAdd)
     info("Hillfort Activity started..")
 
-    presenter = HillfortPresenter(this)
-
-    btnAdd.setOnClickListener {
-      hillfort.title = hillfortTitle.text.toString()
-      hillfort.description = description.text.toString()
-      hillfort.notes = notes.text.toString()
-      hillfort.visited = hillfortVisited.isChecked()
-      hillfort.date = dateVisited.text.toString()
-      if (hillfort.title.isEmpty() || (hillfort.visited && hillfort.date.isEmpty())) {
-        if (hillfort.title.isEmpty()) {
-          toast(R.string.enter_hillfort_title)
-        }
-        if ((hillfort.visited && hillfort.date.isEmpty())) {
-          toast(R.string.enter_date_visited)
-        }
-      } else {
-        if (!hillfort.visited) {
-          hillfort.date = ("")
-        }
-        presenter.doAddOrSave(hillfort.title, hillfort.description, hillfort.notes, hillfort.visited, hillfort.date)
-      }
-    }
+    presenter = initPresenter (HillfortPresenter(this)) as HillfortPresenter
 
     chooseImage.setOnClickListener { presenter.doSelectImage() }
 
     hillfortLocation.setOnClickListener { presenter.doSetLocation() }
   }
 
-  fun showHillfort(hillfort: HillfortModel) {
+  override fun showHillfort(hillfort: HillfortModel) {
     hillfortTitle.setText(hillfort.title)
     description.setText(hillfort.description)
     notes.setText(hillfort.notes)
@@ -63,7 +42,6 @@ class HillfortView : AppCompatActivity(), AnkoLogger {
     if (hillfort.image != null) {
       chooseImage.setText(R.string.change_hillfort_image)
     }
-    btnAdd.setText(R.string.save_hillfort)
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -80,6 +58,28 @@ class HillfortView : AppCompatActivity(), AnkoLogger {
       R.id.item_cancel -> {
         presenter.doCancel()
       }
+
+      R.id.item_save -> {
+        hillfort.title = hillfortTitle.text.toString()
+        hillfort.description = description.text.toString()
+        hillfort.notes = notes.text.toString()
+        hillfort.visited = hillfortVisited.isChecked()
+        hillfort.date = dateVisited.text.toString()
+        if (hillfort.title.isEmpty() || (hillfort.visited && hillfort.date.isEmpty())) {
+          if (hillfort.title.isEmpty()) {
+            toast(R.string.enter_hillfort_title)
+          }
+          if ((hillfort.visited && hillfort.date.isEmpty())) {
+            toast(R.string.enter_date_visited)
+          }
+        } else {
+          if (!hillfort.visited) {
+            hillfort.date = ("")
+          }
+          presenter.doAddOrSave(hillfort.title, hillfort.description, hillfort.notes, hillfort.visited, hillfort.date)
+          presenter.doVisitedCount()
+        }
+      }
     }
     return super.onOptionsItemSelected(item)
   }
@@ -89,5 +89,9 @@ class HillfortView : AppCompatActivity(), AnkoLogger {
     if (data != null) {
       presenter.doActivityResult(requestCode, resultCode, data)
     }
+  }
+
+  override fun onBackPressed() {
+    presenter.doCancel()
   }
 }

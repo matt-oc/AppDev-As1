@@ -39,6 +39,7 @@
   <string name="blank_input_warning">Username &amp; Password not complete</string>
   <string name="already_registered_warning">Username already registered</string>
   <string name="title_activity_hillfort_maps">Map of all Hillforts</string>
+  <string name="menu_saveHillfort">Save</string>
 
 </resources>
 
