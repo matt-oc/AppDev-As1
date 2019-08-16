@@ -1,6 +1,5 @@
 package org.wit.hillfort.activities
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
@@ -9,6 +8,7 @@ import org.wit.hillfort.R
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.HillfortModel
 import org.wit.hillfort.models.UserModel
+import org.wit.hillfort.views.hillfortlist.HillfortListView
 
 /**
  * Matthew O'Connor
@@ -68,7 +68,7 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
         user = userList[0]
         getVisited()
         toast(R.string.login_success)
-        startActivityForResult(intentFor<HillfortListActivity>().putExtra("ID", user), 0)
+        startActivityForResult(intentFor<HillfortListView>().putExtra("ID", user), 0)
         finish()
       } else {
         toast(R.string.login_fail)

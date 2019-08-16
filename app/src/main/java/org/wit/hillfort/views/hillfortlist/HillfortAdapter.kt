@@ -1,4 +1,4 @@
-package org.wit.hillfort.activities
+package org.wit.hillfort.views.hillfortlist
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater

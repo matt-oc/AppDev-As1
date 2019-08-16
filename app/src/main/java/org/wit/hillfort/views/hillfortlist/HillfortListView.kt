@@ -1,4 +1,4 @@
-package org.wit.hillfort.activities
+package org.wit.hillfort.views.hillfortlist
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -6,25 +6,19 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.*
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
-import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
 import org.wit.hillfort.R
+import org.wit.hillfort.activities.*
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.HillfortModel
 import org.wit.hillfort.models.UserModel
+import org.wit.hillfort.views.hillfort.HillfortView
+import org.wit.hillfort.views.map.HillfortMapView
 
-/**
- * Matthew O'Connor
- * OCT 2018
- * Applied Computing
- *
- * Hillfort List Class
- */
+class HillfortListView : AppCompatActivity(), HillfortListener {
 
-class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
-
+  lateinit var presenter: HillfortListPresenter
   lateinit var app: MainApp
   var user = UserModel()
   var visitedCount = 0;
@@ -32,35 +26,19 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_hillfort_list)
-    app = application as MainApp
     toolbarMain.title = title
     setSupportActionBar(toolbarMain)
 
+    presenter = HillfortListPresenter(this)
     val layoutManager = LinearLayoutManager(this)
     recyclerView.layoutManager = layoutManager
-    recyclerView.adapter = HillfortAdapter(app.hillforts.findAll(), this)
-    loadHillforts()
+    recyclerView.adapter = HillfortAdapter(presenter.getHillforts(), this)
+    recyclerView.adapter?.notifyDataSetChanged()
+    hillfortsVisited()
 
     if (intent.hasExtra("ID")) {
       user = intent.extras.getParcelable<UserModel>("ID")
     }
-  }
-
-  private fun loadHillforts() {
-    visitedCount = 0
-    showHillforts( app.hillforts.findAll())
-    for (i in app.hillforts.findAll()) {
-      if (i.visited == true) {
-        visitedCount++
-      }
-
-    }
-    user.visitedNo = visitedCount
-  }
-
-  fun showHillforts (hillforts: List<HillfortModel>) {
-    recyclerView.adapter = HillfortAdapter(hillforts, this)
-    recyclerView.adapter?.notifyDataSetChanged()
   }
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -71,7 +49,7 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
   override fun onOptionsItemSelected(item: MenuItem?): Boolean {
     when (item?.itemId) {
       R.id.item_add -> {
-        startActivityForResult<HillfortActivity>(0)
+        startActivityForResult<HillfortView>(0)
       }
       R.id.user_logout -> {
         startActivityForResult<LoginActivity>(0)
@@ -79,23 +57,33 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener, AnkoLogger {
       }
 
       R.id.user_settings -> {
-        startActivityForResult(intentFor<SettingsActivity>().putExtra("ID", user), 0)
+        startActivityForResult(intentFor<SettingsView>().putExtra("ID", user), 0)
       }
 
       R.id.item_map -> {
-        startActivityForResult<HillfortMapsActivity>(0)
+        startActivityForResult<HillfortMapView>(0)
       }
-
     }
     return super.onOptionsItemSelected(item)
   }
 
   override fun onHillfortClick(hillfort: HillfortModel) {
-    startActivityForResult(intentFor<HillfortActivity>().putExtra("hillfort_edit", hillfort), 0)
+    presenter.doEditHillfort(hillfort)
   }
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    loadHillforts()
+    recyclerView.adapter?.notifyDataSetChanged()
     super.onActivityResult(requestCode, resultCode, data)
+  }
+
+  private fun hillfortsVisited() {
+    visitedCount = 0
+    for (i in app.hillforts.findAll()) {
+      if (i.visited == true) {
+        visitedCount++
+      }
+
+    }
+    user.visitedNo = visitedCount
   }
 }

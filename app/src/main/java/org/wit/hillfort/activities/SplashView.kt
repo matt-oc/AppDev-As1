@@ -17,7 +17,7 @@ import org.wit.hillfort.R
  * Splash Screen Class
  */
 
-class SplashActivity : AppCompatActivity(), AnkoLogger {
+class SplashView : AppCompatActivity(), AnkoLogger {
   private var DelayHandler: Handler? = null
   private val SPLASH_DELAY: Long = 5000 //5 seconds
 

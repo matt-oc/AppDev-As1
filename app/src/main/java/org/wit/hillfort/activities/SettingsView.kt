@@ -21,7 +21,7 @@ import org.wit.hillfort.models.UserModel
  * User Settings Class
  */
 
-class SettingsActivity : AppCompatActivity(), AnkoLogger {
+class SettingsView : AppCompatActivity(), AnkoLogger {
 
   var user = UserModel()
   var hillfort = HillfortModel()
