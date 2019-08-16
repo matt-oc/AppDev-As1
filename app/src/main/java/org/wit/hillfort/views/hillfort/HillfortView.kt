@@ -48,8 +48,8 @@ class HillfortView : BaseView(), AnkoLogger {
     if (hillfort.image != null) {
       chooseImage.setText(R.string.change_hillfort_image)
     }
-    lat.setText("%.6f".format(hillfort.lat))
-    lng.setText("%.6f".format(hillfort.lng))
+    lat.setText("%.6f".format(hillfort.location.lat))
+    lng.setText("%.6f".format(hillfort.location.lng))
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {

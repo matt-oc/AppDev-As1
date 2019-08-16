@@ -40,7 +40,7 @@ class HillfortAdapter constructor(private var hillforts: List<HillfortModel>,
 
     fun bind(hillfort: HillfortModel, listener: HillfortListener) {
       itemView.hillfortTitle.text = hillfort.title
-      itemView.hillfortLocation.text = ("Location: lat-" + hillfort.lat + "  lng-" + hillfort.lng)
+      itemView.hillfortLocation.text = ("Location: lat-" + hillfort.location.lat + "  lng-" + hillfort.location.lng)
       itemView.hillfortVisited.isChecked = hillfort.visited
       itemView.dateVisited.text = hillfort.date
       itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, hillfort.image))

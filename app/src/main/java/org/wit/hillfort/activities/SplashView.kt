@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.startActivityForResult
 import org.wit.hillfort.R
+import org.wit.hillfort.views.login.LoginView
 
 
 /**
@@ -22,7 +23,7 @@ class SplashView : AppCompatActivity(), AnkoLogger {
 
   internal val Runnable: Runnable = Runnable {
     if (!isFinishing) {
-      startActivityForResult<LoginActivity>(0)
+      startActivityForResult<LoginView>(0)
       finish()
     }
   }

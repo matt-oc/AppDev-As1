@@ -5,6 +5,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   tools:context="org.wit.hillfort.activities.LoginActivity">
+
   <LinearLayout
     android:id="@+id/ll_main_layout"
     android:layout_width="match_parent"
