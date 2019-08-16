@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.*
+import kotlinx.android.synthetic.main.activity_hillfort.*
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
@@ -26,7 +27,7 @@ class HillfortListView : BaseView(), HillfortListener {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_hillfort_list)
-    init(toolbarMain)
+    super.init(toolbarMain, false)
 
     presenter = initPresenter(HillfortListPresenter(this)) as HillfortListPresenter
 
