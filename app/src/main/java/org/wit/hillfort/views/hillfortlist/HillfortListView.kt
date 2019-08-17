@@ -77,4 +77,5 @@ class HillfortListView : BaseView(), HillfortListener {
     super.onActivityResult(requestCode, resultCode, data)
   }
 
+
 }

@@ -14,8 +14,8 @@
     android:id="@+id/item_map"
     android:icon="@android:drawable/ic_menu_mapmode"
     android:tint="@color/colorAccent"
-    android:title="@string/menu_addHillfort"
-    app:showAsAction="never"/>
+    android:title="@string/menu_map"
+    app:showAsAction="always"/>
 
   <item
     android:id="@+id/user_settings"

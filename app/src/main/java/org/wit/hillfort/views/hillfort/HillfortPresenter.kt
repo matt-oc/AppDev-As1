@@ -2,6 +2,7 @@ package org.wit.hillfort.views.hillfort
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import androidx.appcompat.R.id.info
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationResult
@@ -23,8 +24,17 @@ import org.wit.hillfort.helpers.isPermissionGranted
 import org.wit.hillfort.models.UserModel
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
+import org.jetbrains.anko.info
 import org.wit.hillfort.views.*
 import org.wit.hillfort.views.editlocation.EditLocationView
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.util.Log
+import android.widget.*
+import kotlinx.coroutines.experimental.async
+import org.jetbrains.anko.*
+
 
 class HillfortPresenter(view: BaseView) : BasePresenter(view) {
 
@@ -114,6 +124,9 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
   @SuppressLint("MissingPermission")
   fun doSetCurrentLocation() {
     locationService.lastLocation.addOnSuccessListener {
+      val i = it.latitude.toString()
+      val j = it.longitude.toString()
+      Log.d("LOGGING", i + j)
       locationUpdate(Location(it.latitude, it.longitude))
     }
   }

@@ -31,5 +31,6 @@ class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
     async(UI) {
       view?.showHillforts(app.hillforts.findAll())
     }
+
   }
   }

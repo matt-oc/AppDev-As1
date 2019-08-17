@@ -47,6 +47,7 @@ ext {
 
   room_version = "2.0.0"
   firebase_version = '16.0.5'
+  glide_version = '4.8.0'
 }
 
 dependencies {
@@ -62,6 +63,7 @@ dependencies {
   implementation "org.jetbrains.anko:anko:$anko_version"
   implementation "com.google.code.gson:gson:$gson_version"
   implementation "androidx.room:room-runtime:$room_version"
+  implementation "com.github.bumptech.glide:glide:$glide_version"
   kapt "androidx.room:room-compiler:$room_version"
 
   implementation "com.google.firebase:firebase-auth:$firebase_version"

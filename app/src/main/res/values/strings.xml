@@ -44,6 +44,7 @@
   <string name="title_activity_hillfort">Hillfort</string>
   <string name="title_activity_edit_location">Hillfort</string>
   <string name="title_activity_login"> Signup/Login to Hillfort</string>
+  <string name="menu_map">Map</string>
 
 </resources>
 

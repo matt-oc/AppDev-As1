@@ -15,6 +15,7 @@ data class HillfortModel(@PrimaryKey(autoGenerate = true)var id: Long = 0,
                           var notes: String = "",
                           var image: String = "",
                           var date: String = "",
+                          var fbId : String = "",
                          @Embedded var location : Location = Location()): Parcelable
 
 @Parcelize
