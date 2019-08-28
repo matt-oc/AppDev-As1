@@ -3,7 +3,7 @@
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
   android:background="#ffffff"
-  tools:context="org.wit.hillfort.activities.SplashView">
+  tools:context="org.wit.hillfort.views.splash.SplashView">
 
   <ImageView
     android:id="@+id/fullscreen_content"

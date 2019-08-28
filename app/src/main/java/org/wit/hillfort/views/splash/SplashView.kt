@@ -1,4 +1,4 @@
-package org.wit.hillfort.activities
+package org.wit.hillfort.views.splash
 
 import android.os.Bundle
 import android.os.Handler
@@ -11,7 +11,7 @@ import org.wit.hillfort.views.login.LoginView
 
 /**
  * Matthew O'Connor
- * OCT 2018
+ * 2019
  * Applied Computing
  *
  * Splash Screen Class
