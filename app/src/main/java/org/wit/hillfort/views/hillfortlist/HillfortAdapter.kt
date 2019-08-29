@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.card_hillfort.view.*
 import org.wit.hillfort.R
+import org.wit.hillfort.helpers.GlideApp
 import org.wit.hillfort.helpers.readImageFromPath
 import org.wit.hillfort.models.HillfortModel
 
@@ -44,7 +44,7 @@ class HillfortAdapter constructor(private var hillforts: List<HillfortModel>,
       itemView.hillfortLocation.text = ("Location: lat-" + hillfort.location.lat + "  lng-" + hillfort.location.lng)
       itemView.hillfortVisited.isChecked = hillfort.visited
       itemView.dateVisited.text = hillfort.date
-      Glide.with(itemView.context).load(hillfort.image).into(itemView.imageIcon);
+      GlideApp.with(itemView.context).load(hillfort.image).error(R.drawable.placeholder).placeholder(R.drawable.placeholder).into(itemView.imageIcon);
       itemView.setOnClickListener { listener.onHillfortClick(hillfort) }
     }
   }

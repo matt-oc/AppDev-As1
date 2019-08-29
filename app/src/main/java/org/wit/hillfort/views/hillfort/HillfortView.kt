@@ -45,7 +45,7 @@ class HillfortView : BaseView(), AnkoLogger {
     notes.setText(hillfort.notes)
     hillfortVisited.setChecked(hillfort.visited)
     dateVisited.setText(hillfort.date)
-    GlideApp.with(this).load(hillfort.image).error(R.drawable.splash).placeholder(R.drawable.splash).into(hillfortImage);
+    GlideApp.with(this).load(hillfort.image).error(R.drawable.placeholder).placeholder(R.drawable.placeholder).into(hillfortImage);
     if (hillfort.image != null) {
       chooseImage.setText(R.string.change_hillfort_image)
     }

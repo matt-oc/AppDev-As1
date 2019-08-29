@@ -26,7 +26,7 @@
   <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:layout_constraintHorizontal_bias="0.5"
+    android:layout_marginTop="16dp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
@@ -116,12 +116,12 @@
       android:id="@+id/notesLabel"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_marginStart="32dp"
       android:layout_marginTop="32dp"
       android:clickable="false"
       android:contextClickable="false"
       android:gravity="center_horizontal"
       android:text="@string/hint_hillfortNotes"
-      app:layout_constraintHorizontal_bias="0.501"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/dateVisited" />
 
@@ -177,21 +177,38 @@
       android:id="@+id/lat"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginEnd="8dp"
+      android:layout_marginStart="8dp"
 
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="8dp"
       android:text="00.000000"
+      app:layout_constraintBottom_toTopOf="@+id/mapView"
       app:layout_constraintEnd_toEndOf="parent"
-      tools:layout_editor_absoluteY="285dp" />
+      app:layout_constraintStart_toEndOf="@+id/dateVisited"
+      app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <TextView
       android:id="@+id/lng"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="8dp"
       android:text="00.000000"
-      tools:layout_editor_absoluteX="336dp"
-      tools:layout_editor_absoluteY="258dp" />
-
+      app:layout_constraintBottom_toTopOf="@+id/lat"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/dateVisited"
+      app:layout_constraintTop_toBottomOf="@+id/description" />
 
 
   </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <com.google.android.material.bottomappbar.BottomAppBar
+    android:id="@+id/bottomAppBar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:layout_editor_absoluteX="195dp"
+    tools:layout_editor_absoluteY="642dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

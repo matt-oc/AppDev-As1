@@ -14,6 +14,7 @@ import org.wit.hillfort.R
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.HillfortModel
 import org.wit.hillfort.models.UserModel
+import org.wit.hillfort.views.login.LoginView
 
 /**
  * Matthew O'Connor
@@ -59,7 +60,7 @@ class SettingsView : AppCompatActivity(), AnkoLogger {
         finish()
       }
       R.id.user_logout -> {
-        startActivityForResult<LoginActivity>(0)
+        startActivityForResult<LoginView>(0)
         toast(R.string.user_logged_out)
         finish()
       }
