@@ -34,6 +34,7 @@ import android.util.Log
 import android.widget.*
 import kotlinx.coroutines.experimental.async
 import org.jetbrains.anko.*
+import org.wit.hillfort.views.hillfortlist.HillfortListPresenter
 
 
 class HillfortPresenter(view: BaseView) : BasePresenter(view) {
@@ -44,11 +45,9 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
   var defLocation = Location(52.245696, -7.139102, 15f)
   var edit = false;
   var user = UserModel()
-  var visitedCount = 0;
 
   var map: GoogleMap? = null
   var locationService: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(view)
-
   init {
     app = view.application as MainApp
     if (view.intent.hasExtra("hillfort_edit")) {

@@ -86,7 +86,6 @@ class HillfortView : BaseView(), AnkoLogger {
             hillfort.date = ("")
           }
           presenter.doAddOrSave(hillfort.title, hillfort.description, hillfort.notes, hillfort.visited, hillfort.date)
-         // presenter.doVisitedCount()
         }
       }
     }

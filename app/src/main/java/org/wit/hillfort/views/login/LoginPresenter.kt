@@ -22,17 +22,6 @@ class LoginPresenter(view: BaseView) : BasePresenter(view) {
 
   var auth: FirebaseAuth = FirebaseAuth.getInstance()
   var fireStore: HillfortFireStore? = null
-  // Build a GoogleSignInClient with the options specified by gso.
-
-  private lateinit var googleSignInClient: GoogleSignInClient
-
-  val RC_SIGN_IN = 1
-
-  // Configure sign-in to request the user's ID, email address, and basic
-  // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
-  var gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-      .requestEmail()
-      .build()
 
   init {
     if (app.hillforts is HillfortFireStore) {
@@ -105,8 +94,7 @@ class LoginPresenter(view: BaseView) : BasePresenter(view) {
     FirebaseAuth.getInstance().signOut()
     app.hillforts.clear()
     view?.navigateTo(VIEW.LOGIN)
-
-
+    view?.finish()
   }
 
 }

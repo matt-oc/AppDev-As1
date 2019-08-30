@@ -6,10 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.*
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
 import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.startActivityForResult
 import org.wit.hillfort.R
-import org.wit.hillfort.activities.LoginActivity
-import org.wit.hillfort.activities.SettingsView
+import org.wit.hillfort.views.settings.SettingsView
 import org.wit.hillfort.models.HillfortModel
 import org.wit.hillfort.models.UserModel
 import org.wit.hillfort.views.BaseView

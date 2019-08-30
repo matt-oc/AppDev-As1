@@ -94,7 +94,7 @@ class LoginView : BaseView() {
         val account = task.getResult(ApiException::class.java)
         presenter.doGoogleLogin(account!!)
       } catch (e: ApiException) {
-        // Google Sign In failed, update UI appropriately
+        // Google Sign In failed
         Log.d(TAG, "Google sign in failed: $e")
       }
     }

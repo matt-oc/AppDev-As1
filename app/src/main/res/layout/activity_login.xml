@@ -6,7 +6,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:background="@color/colorBackground"
-  tools:context="org.wit.hillfort.activities.LoginActivity">
+  tools:context="org.wit.hillfort.views.login.LoginView">
 
   <ImageView
     android:id="@+id/loginImage"
@@ -62,8 +62,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="28dp"
-    android:layout_marginStart="32dp"
-    android:layout_marginTop="20dp"
+    android:layout_marginStart="112dp"
     android:background="@color/colorAccent"
     android:paddingTop="8dp"
     android:paddingBottom="8dp"

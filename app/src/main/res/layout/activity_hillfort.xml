@@ -202,13 +202,39 @@
       app:layout_constraintStart_toEndOf="@+id/dateVisited"
       app:layout_constraintTop_toBottomOf="@+id/description" />
 
+    <RatingBar
+      android:id="@+id/ratingBar"
+      style="@android:style/Widget.Material.RatingBar.Small"
+      android:numStars="5"
+      android:rating="1"
+      android:layout_width="83dp"
+      android:layout_height="17dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="8dp"
+      app:layout_constraintBottom_toTopOf="@+id/notes"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/hillfortTitle" />
+
+    <Switch
+      android:id="@+id/favourite"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="8dp"
+      android:text="Favourite"
+      app:layout_constraintBottom_toTopOf="@+id/hillfortTitle"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.967"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.66" />
+
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 
-  <com.google.android.material.bottomappbar.BottomAppBar
-    android:id="@+id/bottomAppBar"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    tools:layout_editor_absoluteX="195dp"
-    tools:layout_editor_absoluteY="642dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

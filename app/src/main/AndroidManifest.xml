@@ -56,8 +56,7 @@
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".views.hillfortlist.HillfortListView" />
     </activity>
-    <activity android:name=".activities.LoginActivity" />
-    <activity android:name=".activities.SettingsView" />
+    <activity android:name=".views.settings.SettingsView" />
     <activity android:name=".views.hillfortlist.HillfortListView"
       android:label="@string/title_activity_hillfort_list">
     </activity>

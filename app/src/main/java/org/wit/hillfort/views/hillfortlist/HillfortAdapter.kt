@@ -25,6 +25,7 @@ interface HillfortListener {
 class HillfortAdapter constructor(private var hillforts: List<HillfortModel>,
                                    private val listener: HillfortListener) : RecyclerView.Adapter<HillfortAdapter.MainHolder>() {
 
+
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
     return MainHolder(LayoutInflater.from(parent?.context).inflate(R.layout.card_hillfort, parent, false))
   }

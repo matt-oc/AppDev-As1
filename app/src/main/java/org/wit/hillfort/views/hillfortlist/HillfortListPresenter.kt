@@ -25,6 +25,7 @@ class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
   fun doLogout() {
     FirebaseAuth.getInstance().signOut()
     view?.navigateTo(VIEW.LOGIN)
+    view?.finish()
   }
 
   fun loadHillforts() {
