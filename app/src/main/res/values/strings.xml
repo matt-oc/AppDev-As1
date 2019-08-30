@@ -9,7 +9,7 @@
   <string name="menu_deleteHillfort">Delete</string>
   <string name="enter_hillfort_title"> Please enter a Hillfort Title </string>
   <string name="save_hillfort"> Save Hillfort </string>
-  <string name="button_addImage"> Add Image </string>
+  <string name="button_addImage"> + Image </string>
   <string name="select_hillfort_image">Select hillfort image</string>
   <string name="change_hillfort_image">Change hillfort image</string>
   <string name="button_location">Set Location</string>
@@ -46,6 +46,9 @@
   <string name="title_activity_login">Signup/Login to Hillfort</string>
   <string name="menu_map">map</string>
   <string name="title_activity_settings">Settings</string>
+  <string name="favourite">Favourite</string>
+  <string name="loc_default">00.000000</string>
+  <string name="image_add_or_take">Image add or take</string>
 
 </resources>
 

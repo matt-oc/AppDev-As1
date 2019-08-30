@@ -48,9 +48,6 @@ class HillfortView : BaseView(), AnkoLogger {
     rating.setRating(hillfort.rating)
     dateVisited.setText(hillfort.date)
     GlideApp.with(this).load(hillfort.image).error(R.drawable.placeholder).placeholder(R.drawable.placeholder).into(hillfortImage);
-    if (hillfort.image != null) {
-      chooseImage.setText(R.string.change_hillfort_image)
-    }
     lat.setText("%.6f".format(hillfort.location.lat))
     lng.setText("%.6f".format(hillfort.location.lng))
   }
