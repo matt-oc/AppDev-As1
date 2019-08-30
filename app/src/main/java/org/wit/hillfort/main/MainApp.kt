@@ -6,6 +6,12 @@ import org.jetbrains.anko.info
 import org.wit.hillfort.models.HillfortStore
 import org.wit.hillfort.models.firebase.HillfortFireStore
 
+/**
+ * Matthew O'Connor
+ * 2019
+ * Applied Computing
+ */
+
 class MainApp : Application(), AnkoLogger {
   lateinit var hillforts: HillfortStore
 

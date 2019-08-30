@@ -16,10 +16,8 @@ import org.wit.hillfort.views.login.LoginPresenter
 
 /**
  * Matthew O'Connor
- * OCT 2018
+ * 2019
  * Applied Computing
- *
- * User Settings Class
  */
 
 class SettingsView : BaseView(), AnkoLogger {

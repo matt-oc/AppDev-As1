@@ -8,6 +8,12 @@ import androidx.core.app.ActivityCompat
 import android.util.Log
 import com.google.android.gms.location.LocationRequest
 
+/**
+ * Matthew O'Connor
+ * 2019
+ * Applied Computing
+ */
+
 val REQUEST_PERMISSIONS_REQUEST_CODE = 34
 
 fun checkLocationPermissions(activity: Activity) : Boolean {

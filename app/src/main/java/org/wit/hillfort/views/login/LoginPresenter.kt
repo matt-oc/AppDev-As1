@@ -1,22 +1,20 @@
 package org.wit.hillfort.views.login
 
-import android.content.Intent
-import android.util.Log
-import androidx.core.app.ActivityCompat.startActivityForResult
-import com.google.android.gms.common.api.ApiException
+
 import org.wit.hillfort.views.BasePresenter
 import com.google.firebase.auth.FirebaseAuth
 import org.jetbrains.anko.toast
-import org.wit.hillfort.R
 import org.wit.hillfort.models.firebase.HillfortFireStore
 import org.wit.hillfort.views.BaseView
 import org.wit.hillfort.views.VIEW
-import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.GoogleAuthProvider
+
+/**
+ * Matthew O'Connor
+ * 2019
+ * Applied Computing
+ */
 
 class LoginPresenter(view: BaseView) : BasePresenter(view) {
 

@@ -8,6 +8,12 @@ import org.wit.hillfort.views.VIEW
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 
+/**
+ * Matthew O'Connor
+ * 2019
+ * Applied Computing
+ */
+
 class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
 
   fun doAddHillfort() {

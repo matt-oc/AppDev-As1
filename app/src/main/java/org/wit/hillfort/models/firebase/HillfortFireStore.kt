@@ -13,6 +13,12 @@ import org.wit.hillfort.models.HillfortStore
 import java.io.ByteArrayOutputStream
 import java.io.File
 
+/**
+ * Matthew O'Connor
+ * 2019
+ * Applied Computing
+ */
+
 class HillfortFireStore(val context: Context) : HillfortStore, AnkoLogger {
 
   val hillforts = ArrayList<HillfortModel>()

@@ -13,8 +13,6 @@ import org.wit.hillfort.views.login.LoginView
  * Matthew O'Connor
  * 2019
  * Applied Computing
- *
- * Splash Screen Class
  */
 
 class SplashView : AppCompatActivity(), AnkoLogger {

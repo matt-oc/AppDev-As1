@@ -9,10 +9,8 @@ import org.wit.hillfort.views.BaseView
 
 /**
  * Matthew O'Connor
- * OCT 2018
+ * 2019
  * Applied Computing
- *
- * User Settings Class
  */
 
 class SettingsPresenter(view: BaseView) : BasePresenter(view) {

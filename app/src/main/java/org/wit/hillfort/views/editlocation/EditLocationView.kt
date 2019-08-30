@@ -4,9 +4,14 @@ import android.os.Bundle
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.Marker
-import kotlinx.android.synthetic.main.activity_hillfort.*
 import org.wit.hillfort.R
 import org.wit.hillfort.views.BaseView
+
+/**
+ * Matthew O'Connor
+ * 2019
+ * Applied Computing
+ */
 
 class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
 

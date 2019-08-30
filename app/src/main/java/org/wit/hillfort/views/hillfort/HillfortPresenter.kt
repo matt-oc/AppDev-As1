@@ -23,6 +23,12 @@ import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import org.wit.hillfort.views.*
 
+/**
+ * Matthew O'Connor
+ * 2019
+ * Applied Computing
+ */
+
 
 class HillfortPresenter(view: BaseView) : BasePresenter(view) {
 

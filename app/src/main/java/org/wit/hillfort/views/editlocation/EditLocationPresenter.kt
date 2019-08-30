@@ -1,6 +1,5 @@
 package org.wit.hillfort.views.editlocation
 
-import android.app.Activity
 import android.content.Intent
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -10,6 +9,12 @@ import com.google.android.gms.maps.model.MarkerOptions
 import org.wit.hillfort.models.Location
 import org.wit.hillfort.views.BasePresenter
 import org.wit.hillfort.views.BaseView
+
+/**
+ * Matthew O'Connor
+ * 2019
+ * Applied Computing
+ */
 
 class EditLocationPresenter(view: BaseView) : BasePresenter(view)  {
 

@@ -7,9 +7,14 @@ import org.wit.hillfort.R
 import kotlinx.android.synthetic.main.activity_hillfort_map.*
 import kotlinx.android.synthetic.main.content_hillfort_map.*
 import org.wit.hillfort.helpers.GlideApp
-import org.wit.hillfort.helpers.readImageFromPath
 import org.wit.hillfort.models.HillfortModel
 import org.wit.hillfort.views.BaseView
+
+/**
+ * Matthew O'Connor
+ * 2019
+ * Applied Computing
+ */
 
 class HillfortMapView : BaseView(), GoogleMap.OnMarkerClickListener {
 

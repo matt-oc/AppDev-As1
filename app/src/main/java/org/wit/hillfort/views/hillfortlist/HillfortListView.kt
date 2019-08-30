@@ -5,13 +5,15 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.*
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
-import kotlinx.android.synthetic.main.card_hillfort.rating
-import org.jetbrains.anko.info
 import org.wit.hillfort.R
 import org.wit.hillfort.models.HillfortModel
 import org.wit.hillfort.views.BaseView
-import org.wit.hillfort.views.hillfort.HillfortPresenter
 
+/**
+ * Matthew O'Connor
+ * 2019
+ * Applied Computing
+ */
 
 class HillfortListView : BaseView(), HillfortListener {
 

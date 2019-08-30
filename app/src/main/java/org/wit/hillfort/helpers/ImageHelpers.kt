@@ -10,6 +10,12 @@ import android.provider.MediaStore
 import org.wit.hillfort.R
 import java.io.IOException
 
+/**
+ * Matthew O'Connor
+ * 2019
+ * Applied Computing
+ */
+
 fun showImagePicker(parent: Activity, id: Int) {
   val intent = Intent()
   intent.type = "image/*"

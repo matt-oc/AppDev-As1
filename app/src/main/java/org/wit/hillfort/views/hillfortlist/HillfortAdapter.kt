@@ -7,15 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.card_hillfort.view.*
 import org.wit.hillfort.R
 import org.wit.hillfort.helpers.GlideApp
-import org.wit.hillfort.helpers.readImageFromPath
 import org.wit.hillfort.models.HillfortModel
 
 /**
  * Matthew O'Connor
- * OCT 2018
+ * 2019
  * Applied Computing
- *
- * Hillfort Listener Class
  */
 
 interface HillfortListener {
