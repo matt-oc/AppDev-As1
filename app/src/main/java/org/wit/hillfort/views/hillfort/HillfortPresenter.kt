@@ -2,7 +2,6 @@ package org.wit.hillfort.views.hillfort
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.R.id.info
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationResult
@@ -11,7 +10,6 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import org.jetbrains.anko.intentFor
 import org.wit.hillfort.R
 import org.wit.hillfort.helpers.showImagePicker
 import org.wit.hillfort.main.MainApp
@@ -21,20 +19,9 @@ import org.jetbrains.anko.toast
 import org.wit.hillfort.helpers.checkLocationPermissions
 import org.wit.hillfort.helpers.createDefaultLocationRequest
 import org.wit.hillfort.helpers.isPermissionGranted
-import org.wit.hillfort.models.UserModel
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
-import org.jetbrains.anko.info
 import org.wit.hillfort.views.*
-import org.wit.hillfort.views.editlocation.EditLocationView
-
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.util.Log
-import android.widget.*
-import kotlinx.coroutines.experimental.async
-import org.jetbrains.anko.*
-import org.wit.hillfort.views.hillfortlist.HillfortListPresenter
 
 
 class HillfortPresenter(view: BaseView) : BasePresenter(view) {
@@ -44,7 +31,6 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
   var hillfort = HillfortModel()
   var defLocation = Location(52.245696, -7.139102, 15f)
   var edit = false;
-  var user = UserModel()
 
   var map: GoogleMap? = null
   var locationService: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(view)
@@ -62,12 +48,14 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
     }
   }
 
-  fun doAddOrSave(title: String, description: String, notes: String, hillfortVisited: Boolean, dateVisited: String) {
+  fun doAddOrSave(title: String, description: String, notes: String, hillfortVisited: Boolean, dateVisited: String, rating: Float, favourite: Boolean) {
     hillfort.title = title
     hillfort.description = description
     hillfort.notes = notes
     hillfort.visited = hillfortVisited
     hillfort.date = dateVisited
+    hillfort.rating = rating
+    hillfort.favourite = favourite
     async(UI) {
       if (edit) {
         app.hillforts.update(hillfort)
@@ -78,16 +66,6 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
     }
   }
 
-  //fun doVisitedCount () {
-   // visitedCount = 0
-    //for (i in app.hillforts.findAll()) {
-     // if (i.visited == true) {
-      //  visitedCount++
-     // }
-    //}
-    //user.visitedNo = visitedCount
-  //}
-
   fun doCancel() {
     view?.finish()
   }
@@ -97,6 +75,17 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
       app.hillforts.delete(hillfort)
       view?.toast(R.string.hillfort_delete)
       view?.finish()
+    }
+  }
+
+
+  fun setFav(favourite: Boolean) {
+
+    hillfort.favourite = favourite
+    async(UI) {
+
+        app.hillforts.update(hillfort)
+
     }
   }
 

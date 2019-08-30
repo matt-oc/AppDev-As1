@@ -7,6 +7,7 @@ import com.google.android.gms.maps.model.Marker
 import org.wit.hillfort.R
 import kotlinx.android.synthetic.main.activity_hillfort_map.*
 import kotlinx.android.synthetic.main.content_hillfort_map.*
+import org.wit.hillfort.helpers.GlideApp
 import org.wit.hillfort.helpers.readImageFromPath
 import org.wit.hillfort.models.HillfortModel
 import org.wit.hillfort.views.BaseView
@@ -33,7 +34,8 @@ class HillfortMapView : BaseView(), GoogleMap.OnMarkerClickListener {
   override fun showHillfort(hillfort: HillfortModel) {
     currentTitle.text = hillfort.title
     currentDescription.text = hillfort.description
-    Glide.with(this).load(hillfort.image).into(imageView);
+    GlideApp.with(this).load(hillfort.image).error(R.drawable.placeholder).placeholder(R.drawable.placeholder).into(imageView);
+
   }
 
   override fun showHillforts(placemarks: List<HillfortModel>) {

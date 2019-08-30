@@ -44,6 +44,7 @@ class HillfortAdapter constructor(private var hillforts: List<HillfortModel>,
       itemView.hillfortTitle.text = hillfort.title
       itemView.hillfortLocation.text = ("Location: lat-" + hillfort.location.lat + "  lng-" + hillfort.location.lng)
       itemView.hillfortVisited.isChecked = hillfort.visited
+      itemView.rating.rating = hillfort.rating
       itemView.dateVisited.text = hillfort.date
       GlideApp.with(itemView.context).load(hillfort.image).error(R.drawable.placeholder).placeholder(R.drawable.placeholder).into(itemView.imageIcon);
       itemView.setOnClickListener { listener.onHillfortClick(hillfort) }

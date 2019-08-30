@@ -14,12 +14,13 @@ import org.wit.hillfort.views.map.HillfortMapView
 import org.wit.hillfort.views.hillfort.HillfortView
 import org.wit.hillfort.views.hillfortlist.HillfortListView
 import org.wit.hillfort.views.login.LoginView
+import org.wit.hillfort.views.settings.SettingsView
 
 val IMAGE_REQUEST = 1
 val LOCATION_REQUEST = 2
 
 enum class VIEW {
-  LOCATION, HILLFORT, MAPS, LIST, LOGIN
+  LOCATION, HILLFORT, MAPS, LIST, LOGIN, SETTINGS
 }
 
 open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
@@ -34,6 +35,7 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
       VIEW.MAPS -> intent = Intent(this, HillfortMapView::class.java)
       VIEW.LIST -> intent = Intent(this, HillfortListView::class.java)
       VIEW.LOGIN -> intent = Intent(this, LoginView::class.java)
+      VIEW.SETTINGS -> intent = Intent(this, SettingsView::class.java)
     }
     if (key != "") {
       intent.putExtra(key, value)
@@ -50,10 +52,6 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
     toolbar.title = title
     setSupportActionBar(toolbar)
     supportActionBar?.setDisplayHomeAsUpEnabled(upEnabled)
-    val user = FirebaseAuth.getInstance().currentUser
-    if (user != null) {
-      toolbar.title = "${title}: ${user.email}"
-    }
   }
 
   override fun onDestroy() {
@@ -75,6 +73,7 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
 
   open fun showHillfort(hillfort: HillfortModel) {}
   open fun showHillforts(hillforts: List<HillfortModel>) {}
+  open fun displayCount(count: Int) {}
   open fun showProgress() {}
   open fun hideProgress() {}
 }

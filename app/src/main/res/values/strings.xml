@@ -26,10 +26,10 @@
   <string name="registration_success">Successfully Registered</string>
   <string name="login_prompt">You may now login</string>
   <string name="login_success">Login Successful</string>
-  <string name="email">Email</string>
+  <string name="email">Email: </string>
   <string name="password">Password</string>
   <string name="hillforts_visited">Hillforts Visited</string>
-  <string name="total_hillforts">Total Hillforts</string>
+  <string name="total_hillforts">Total Hillforts: </string>
   <string name="user_settings_title">Current User:</string>
   <string name="user_logged_out">Logout Successful</string>
   <string name="email_string">Email: </string>
@@ -43,8 +43,9 @@
   <string name="title_activity_hillfort_list">Hillforts</string>
   <string name="title_activity_hillfort">Hillfort</string>
   <string name="title_activity_edit_location">Hillfort</string>
-  <string name="title_activity_login"> Signup/Login to Hillfort</string>
-  <string name="menu_map">Map</string>
+  <string name="title_activity_login">Signup/Login to Hillfort</string>
+  <string name="menu_map">map</string>
+  <string name="title_activity_settings">Settings</string>
 
 </resources>
 

@@ -1,24 +1,18 @@
 package org.wit.hillfort.views.settings
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import kotlinx.android.synthetic.main.activity_hillfort.*
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.user_settings.*
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
-import org.jetbrains.anko.startActivityForResult
-import org.jetbrains.anko.toast
 import org.wit.hillfort.R
-import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.HillfortModel
-import org.wit.hillfort.models.UserModel
 import org.wit.hillfort.views.BaseView
 import org.wit.hillfort.views.login.LoginPresenter
-import org.wit.hillfort.views.login.LoginView
 
 /**
  * Matthew O'Connor
@@ -30,7 +24,6 @@ import org.wit.hillfort.views.login.LoginView
 
 class SettingsView : BaseView(), AnkoLogger {
 
-  var user = UserModel()
   var hillfort = HillfortModel()
   lateinit var presenter: SettingsPresenter
   lateinit var authPresenter: LoginPresenter
@@ -42,19 +35,22 @@ class SettingsView : BaseView(), AnkoLogger {
     info("Hillfort Activity started..")
 
     presenter = initPresenter (SettingsPresenter(this)) as SettingsPresenter
+    presenter.countHillforts()
 
 
-    async(UI) {
-      user_email.setText(getResources().getString(R.string.email_string) + user.email)
-      user_password.setText(getResources().getString(R.string.password_string) + user.password)
-      visited_hillforts.setText(getResources().getString(R.string.no_visited_sites) + user.visitedNo)
-      //total_hillforts.setText(getResources().getString(R.string.no_listed_sites) + app.hillforts.findAll().size)
+    val user = FirebaseAuth.getInstance().currentUser
+    if (user != null) {
+      user_email.setText("User: ${user.email}")
     }
   }
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
     menuInflater.inflate(R.menu.menu_user_settings, menu)
     return super.onCreateOptionsMenu(menu)
+  }
+
+  override fun displayCount(count: Int) {
+    total_hillforts.setText("Total Hillforts is: " + count)
   }
 
   override fun onOptionsItemSelected(item: MenuItem?): Boolean {

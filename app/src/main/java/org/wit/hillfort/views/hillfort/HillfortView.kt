@@ -44,6 +44,8 @@ class HillfortView : BaseView(), AnkoLogger {
     description.setText(hillfort.description)
     notes.setText(hillfort.notes)
     hillfortVisited.setChecked(hillfort.visited)
+    favourite.setChecked(hillfort.favourite)
+    rating.setRating(hillfort.rating)
     dateVisited.setText(hillfort.date)
     GlideApp.with(this).load(hillfort.image).error(R.drawable.placeholder).placeholder(R.drawable.placeholder).into(hillfortImage);
     if (hillfort.image != null) {
@@ -73,6 +75,8 @@ class HillfortView : BaseView(), AnkoLogger {
         hillfort.description = description.text.toString()
         hillfort.notes = notes.text.toString()
         hillfort.visited = hillfortVisited.isChecked()
+        hillfort.favourite = favourite.isChecked()
+        hillfort.rating = rating.getRating()
         hillfort.date = dateVisited.text.toString()
         if (hillfort.title.isEmpty() || (hillfort.visited && hillfort.date.isEmpty())) {
           if (hillfort.title.isEmpty()) {
@@ -85,7 +89,7 @@ class HillfortView : BaseView(), AnkoLogger {
           if (!hillfort.visited) {
             hillfort.date = ("")
           }
-          presenter.doAddOrSave(hillfort.title, hillfort.description, hillfort.notes, hillfort.visited, hillfort.date)
+          presenter.doAddOrSave(hillfort.title, hillfort.description, hillfort.notes, hillfort.visited, hillfort.date, hillfort.rating, hillfort.favourite)
         }
       }
     }

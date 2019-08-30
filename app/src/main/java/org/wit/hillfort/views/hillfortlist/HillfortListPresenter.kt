@@ -28,10 +28,14 @@ class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
     view?.finish()
   }
 
+  fun doSettings() {
+    view?.navigateTo(VIEW.SETTINGS)
+  }
+
   fun loadHillforts() {
     async(UI) {
       view?.showHillforts(app.hillforts.findAll())
     }
+    }
+  }
 
-  }
-  }

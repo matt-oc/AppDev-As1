@@ -51,25 +51,10 @@
           tools:padding="11dp" />
 
         <TextView
-          android:id="@+id/user_password"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="@string/password"
-          android:textSize="17dp"
-          tools:padding="11dp" />
-
-        <TextView
-          android:id="@+id/visited_hillforts"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="@string/hillforts_visited"
-          android:textSize="17dp"
-          tools:padding="11dp" />
-
-        <TextView
           android:id="@+id/total_hillforts"
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"
+          android:layout_height="106dp"
+          android:layout_marginTop="20dp"
           android:text="@string/total_hillforts"
           android:textSize="17dp"
           tools:padding="11dp" />

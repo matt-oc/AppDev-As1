@@ -203,20 +203,21 @@
       app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <RatingBar
-      android:id="@+id/ratingBar"
-      style="@android:style/Widget.Material.RatingBar.Small"
-      android:numStars="5"
-      android:rating="1"
-      android:layout_width="83dp"
-      android:layout_height="17dp"
+      android:id="@+id/rating"
+      style="@android:style/Widget.Material.RatingBar"
+      android:layout_width="230dp"
+      android:layout_height="60dp"
       android:layout_marginStart="8dp"
       android:layout_marginTop="8dp"
       android:layout_marginEnd="8dp"
       android:layout_marginBottom="8dp"
-      app:layout_constraintBottom_toTopOf="@+id/notes"
+      android:numStars="5"
+      android:rating="1"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/hillfortTitle" />
+      app:layout_constraintTop_toBottomOf="@+id/mapView" />
 
     <Switch
       android:id="@+id/favourite"

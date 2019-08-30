@@ -5,19 +5,17 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.*
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
-import org.jetbrains.anko.intentFor
+import kotlinx.android.synthetic.main.card_hillfort.rating
+import org.jetbrains.anko.info
 import org.wit.hillfort.R
-import org.wit.hillfort.views.settings.SettingsView
 import org.wit.hillfort.models.HillfortModel
-import org.wit.hillfort.models.UserModel
 import org.wit.hillfort.views.BaseView
+import org.wit.hillfort.views.hillfort.HillfortPresenter
 
 
 class HillfortListView : BaseView(), HillfortListener {
 
   lateinit var presenter: HillfortListPresenter
-  var user = UserModel()
-  var visitedCount = 0;
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -30,9 +28,7 @@ class HillfortListView : BaseView(), HillfortListener {
     recyclerView.layoutManager = layoutManager
     presenter.loadHillforts()
 
-    if (intent.hasExtra("ID")) {
-      user = intent.extras.getParcelable<UserModel>("ID")
-    }
+
   }
 
    override fun showHillforts(hillforts: List<HillfortModel>) {
@@ -56,7 +52,7 @@ class HillfortListView : BaseView(), HillfortListener {
       }
 
       R.id.user_settings -> {
-        startActivityForResult(intentFor<SettingsView>().putExtra("ID", user), 0)
+        presenter.doSettings()
       }
 
       R.id.item_map -> {
@@ -69,6 +65,7 @@ class HillfortListView : BaseView(), HillfortListener {
   override fun onHillfortClick(hillfort: HillfortModel) {
     presenter.doEditHillfort(hillfort)
   }
+
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     presenter.loadHillforts()
