@@ -14,7 +14,7 @@ import com.google.android.gms.location.LocationRequest
  * Applied Computing
  */
 
-val REQUEST_PERMISSIONS_REQUEST_CODE = 34
+private val REQUEST_PERMISSIONS_REQUEST_CODE = 34
 
 fun checkLocationPermissions(activity: Activity) : Boolean {
   if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {

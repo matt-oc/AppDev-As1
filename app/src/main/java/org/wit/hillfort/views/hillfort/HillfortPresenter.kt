@@ -2,6 +2,9 @@ package org.wit.hillfort.views.hillfort
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.util.Log
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationResult
@@ -11,16 +14,13 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import org.wit.hillfort.R
-import org.wit.hillfort.helpers.showImagePicker
 import org.wit.hillfort.main.MainApp
 import org.wit.hillfort.models.Location
 import org.wit.hillfort.models.HillfortModel
 import org.jetbrains.anko.toast
-import org.wit.hillfort.helpers.checkLocationPermissions
-import org.wit.hillfort.helpers.createDefaultLocationRequest
-import org.wit.hillfort.helpers.isPermissionGranted
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
+import org.wit.hillfort.helpers.*
 import org.wit.hillfort.views.*
 
 /**
@@ -46,6 +46,7 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
       edit = true
       hillfort = view.intent.extras.getParcelable<HillfortModel>("hillfort_edit")
       view.showHillfort(hillfort)
+      checkImagePermissions(view)
     }
     else {
       if (checkLocationPermissions(view)) {
@@ -84,16 +85,6 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
     }
   }
 
-
-  fun setFav(favourite: Boolean) {
-
-    hillfort.favourite = favourite
-    async(UI) {
-
-        app.hillforts.update(hillfort)
-
-    }
-  }
 
   fun doSelectImage() {
     view?.let {
@@ -162,15 +153,20 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
   }
 
     override fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+      Log.i("REQUEST CODE: ", requestCode.toString())
       when (requestCode) {
-        IMAGE_REQUEST -> {
+        GALLERY -> {
           hillfort.image = data.data.toString()
           view?.showHillfort(hillfort)
         }
         LOCATION_REQUEST -> {
           val location = data.extras.getParcelable<Location>("location")
-          hillfort.location = location
-          locationUpdate(location)
+            hillfort.location = location
+            locationUpdate(location)
+        }
+        CAMERA -> {
+          hillfort.image = data.data.toString() // not Correct
+          view?.showHillfort(hillfort)
         }
       }
     }
