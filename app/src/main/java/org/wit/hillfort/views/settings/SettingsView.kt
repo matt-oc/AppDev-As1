@@ -5,14 +5,11 @@ import android.view.Menu
 import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.user_settings.*
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.async
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.wit.hillfort.R
 import org.wit.hillfort.models.HillfortModel
 import org.wit.hillfort.views.BaseView
-import org.wit.hillfort.views.login.LoginPresenter
 
 /**
  * Matthew O'Connor
@@ -24,7 +21,6 @@ class SettingsView : BaseView(), AnkoLogger {
 
   var hillfort = HillfortModel()
   lateinit var presenter: SettingsPresenter
-  lateinit var authPresenter: LoginPresenter
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -55,7 +51,8 @@ class SettingsView : BaseView(), AnkoLogger {
     when (item?.itemId) {
 
       R.id.user_logout -> {
-        authPresenter.doLogout()
+        presenter.doLogout()
+        finish()
       }
     }
     return super.onOptionsItemSelected(item)
