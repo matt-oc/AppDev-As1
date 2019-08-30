@@ -1,7 +1,6 @@
 package org.wit.hillfort.views.map
 
 import android.os.Bundle
-import com.bumptech.glide.Glide
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
 import org.wit.hillfort.R
@@ -20,7 +19,7 @@ class HillfortMapView : BaseView(), GoogleMap.OnMarkerClickListener {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_hillfort_map)
-    setSupportActionBar(toolbarMaps)
+    super.init(toolbarMaps, true)
     presenter = initPresenter (HillfortMapPresenter(this)) as HillfortMapPresenter
 
     mapView.onCreate(savedInstanceState);

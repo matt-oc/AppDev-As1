@@ -66,9 +66,6 @@ class HillfortView : BaseView(), AnkoLogger {
       R.id.item_delete -> {
         presenter.doDelete()
       }
-      R.id.item_cancel -> {
-        presenter.doCancel()
-      }
 
       R.id.item_save -> {
         hillfort.title = hillfortTitle.text.toString()

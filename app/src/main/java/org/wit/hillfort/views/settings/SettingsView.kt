@@ -56,9 +56,6 @@ class SettingsView : BaseView(), AnkoLogger {
   override fun onOptionsItemSelected(item: MenuItem?): Boolean {
     when (item?.itemId) {
 
-      R.id.item_cancel -> {
-        presenter.doCancel()
-      }
       R.id.user_logout -> {
         authPresenter.doLogout()
       }
