@@ -25,6 +25,7 @@ class SettingsPresenter(view: BaseView) : BasePresenter(view) {
 
   fun doLogout() {
     FirebaseAuth.getInstance().signOut()
+    app.hillforts.clear()
     view?.navigateTo(VIEW.LOGIN)
     view?.finish()
   }
