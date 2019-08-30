@@ -3,7 +3,7 @@
 <resources>
   <color name="colorPrimary">#FFFFFF</color>
   <color name="colorPrimaryDark">#000000</color>
-  <color name="colorAccent">#80CBd4</color>
+  <color name="colorAccent">#80CBC4</color>
   <color name="colorBackground">#000000</color>
   <color name="colorLoginText">#ffe6ff</color>
 </resources>
