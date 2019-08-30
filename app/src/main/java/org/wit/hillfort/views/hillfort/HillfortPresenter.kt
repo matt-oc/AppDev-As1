@@ -165,7 +165,7 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
             locationUpdate(location)
         }
         CAMERA -> {
-          hillfort.image = data.data.toString() // not Correct
+          hillfort.image = "" // not Correct
           view?.showHillfort(hillfort)
         }
       }
