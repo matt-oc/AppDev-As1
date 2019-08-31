@@ -1,9 +1,11 @@
 package org.wit.hillfort.views.hillfort
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.util.Log
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
@@ -22,6 +24,7 @@ import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import org.wit.hillfort.helpers.*
 import org.wit.hillfort.views.*
+import java.io.File
 
 /**
  * Matthew O'Connor
@@ -152,6 +155,15 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
     }
   }
 
+  fun cameraPicSaveAndGet(path : String): String {
+    val f = File(path)
+    Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE).also { mediaScanIntent ->
+      mediaScanIntent.data = Uri.fromFile(f)
+      app.sendBroadcast(mediaScanIntent)
+    }
+    return Uri.fromFile(f).toString()
+  }
+
     override fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
       Log.i("REQUEST CODE: ", requestCode.toString())
       when (requestCode) {
@@ -165,8 +177,14 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
             locationUpdate(location)
         }
         CAMERA -> {
-          hillfort.image = "" // not Correct
-          view?.showHillfort(hillfort)
+          if (mCurrentPhotoPath != "") {
+            if (resultCode == Activity.RESULT_OK) {
+              hillfort.image = cameraPicSaveAndGet(mCurrentPhotoPath)
+              Log.i("Image URI", hillfort.image);
+              view?.showHillfort(hillfort)
+            }
+
+          }
         }
       }
     }
