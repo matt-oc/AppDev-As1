@@ -28,6 +28,16 @@
       android:name="org.apache.http.legacy"
       android:required="false" />
 
+    <provider
+      android:name="androidx.core.content.FileProvider"
+      android:authorities="org.wit.hillfort.fileprovider"
+      android:exported="false"
+      android:grantUriPermissions="true">
+      <meta-data
+        android:name="android.support.FILE_PROVIDER_PATHS"
+        android:resource="@xml/file_paths" />
+    </provider>
+
     <activity
       android:name=".views.splash.SplashView"
       android:configChanges="orientation|keyboardHidden|screenSize"

@@ -2,6 +2,7 @@ package org.wit.hillfort.views.hillfort
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.google.android.gms.maps.GoogleMap
@@ -97,8 +98,13 @@ class HillfortView : BaseView(), AnkoLogger {
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     super.onActivityResult(requestCode, resultCode, data)
+    Log.i("REQCODE", requestCode.toString() + resultCode.toString())
     if (data != null) {
       presenter.doActivityResult(requestCode, resultCode, data)
+    }
+    else if (data == null && requestCode == 3) {
+      val intent = Intent()
+      presenter.doActivityResult(requestCode, resultCode, intent)
     }
   }
 
