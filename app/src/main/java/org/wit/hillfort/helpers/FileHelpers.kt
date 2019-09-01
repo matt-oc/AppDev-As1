@@ -4,6 +4,12 @@ import android.content.Context
 import android.util.Log
 import java.io.*
 
+/**
+ * Matthew O'Connor
+ * 2019
+ * Applied Computing
+ */
+
 fun write(context: Context, fileName: String, data: String) {
   try {
     val outputStreamWriter = OutputStreamWriter(context.openFileOutput(fileName, Context.MODE_PRIVATE))

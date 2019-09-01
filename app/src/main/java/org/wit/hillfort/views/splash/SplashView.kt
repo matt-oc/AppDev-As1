@@ -1,29 +1,27 @@
-package org.wit.hillfort.activities
+package org.wit.hillfort.views.splash
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.startActivityForResult
 import org.wit.hillfort.R
+import org.wit.hillfort.views.login.LoginView
 
 
 /**
  * Matthew O'Connor
- * OCT 2018
+ * 2019
  * Applied Computing
- *
- * Splash Screen Class
  */
 
-class SplashActivity : AppCompatActivity(), AnkoLogger {
+class SplashView : AppCompatActivity(), AnkoLogger {
   private var DelayHandler: Handler? = null
   private val SPLASH_DELAY: Long = 5000 //5 seconds
 
   internal val Runnable: Runnable = Runnable {
     if (!isFinishing) {
-      startActivityForResult<LoginActivity>(0)
+      startActivityForResult<LoginView>(0)
       finish()
     }
   }

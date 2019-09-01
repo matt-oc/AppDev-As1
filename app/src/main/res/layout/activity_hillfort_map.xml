@@ -4,7 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="org.wit.hillfort.views.hillfortlist.HillfortListView">
+  tools:context="org.wit.hillfort.views.map.HillfortMapView">
 
   <com.google.android.material.appbar.AppBarLayout
     android:layout_width="match_parent"
@@ -15,23 +15,13 @@
     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
     <androidx.appcompat.widget.Toolbar
-      android:id="@+id/toolbarMain"
+      android:id="@+id/toolbarMaps"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      app:titleTextColor="@color/colorPrimary" />
+      app:titleTextColor="@color/colorPrimary"/>
+
   </com.google.android.material.appbar.AppBarLayout>
 
-  <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/recyclerView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginBottom="20dp"
-    android:gravity="center_horizontal"
-    android:paddingBottom="50dp"
-    android:scrollbars="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+  <include layout="@layout/content_hillfort_map" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

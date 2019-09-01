@@ -1,8 +1,10 @@
 package org.wit.hillfort.models
 
 interface HillfortStore {
-  fun findAll(): List<HillfortModel>
-  fun create(hillfortModel: HillfortModel)
-  fun update(hillfort: HillfortModel)
-  fun delete(hillfort: HillfortModel)
+  suspend fun findAll(): List<HillfortModel>
+  suspend fun create(hillfortModel: HillfortModel)
+  suspend fun update(hillfort: HillfortModel)
+  suspend fun delete(hillfort: HillfortModel)
+  suspend fun findById(id:Long) : HillfortModel?
+  fun clear()
 }

@@ -1,19 +1,24 @@
 package org.wit.hillfort.models
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.Embedded
+import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class HillfortModel(var id: Long = 0,
+@Entity
+data class HillfortModel(@PrimaryKey(autoGenerate = true)var id: Long = 0,
                           var title: String = "",
                           var description: String = "",
                           var visited: Boolean = false,
+                          var favourite: Boolean = false,
+                          var rating: Float = 1.0f,
                           var notes: String = "",
                           var image: String = "",
-                          var lat: Double = 0.0,
-                          var lng: Double = 0.0,
-                          var zoom: Float = 0f,
-                          var date: String = "") : Parcelable
+                          var date: String = "",
+                          var fbId : String = "",
+                         @Embedded var location : Location = Location()): Parcelable
 
 @Parcelize
 data class Location(var lat: Double = 0.0,
