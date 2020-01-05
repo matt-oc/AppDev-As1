@@ -1,4 +1,4 @@
-# AppDev-As1
+# Hillforts Advanced App
 Assignment 2 for App Development
 
 <img width="271" alt="screen shot 2018-11-05 at 00 44 47" src="https://user-images.githubusercontent.com/16647291/64079123-961e8f00-ccdb-11e9-9ec9-df70ad78576d.jpg">
